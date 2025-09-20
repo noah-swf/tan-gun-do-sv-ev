@@ -2,6 +2,11 @@
 	import { isPreviewing, VisualEditing } from '@sanity/visual-editing/svelte';
 	import { page } from '$app/stores';
 	import LiveMode from '../components/LiveMode.svelte';
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
 </script>
 
 {#if $isPreviewing}
@@ -16,7 +21,7 @@
 		<a class="header__title" href="/">SvelteKit + Sanity</a>
 	</header>
 	<main>
-		<slot />
+		{@render children?.()}
 	</main>
 	<footer class="footer">
 		<p class="footer__text">

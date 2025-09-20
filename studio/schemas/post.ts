@@ -1,18 +1,18 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'post',
-  title: 'Post',
+  name: 'NewsPost',
+  title: 'News Posts',
   type: 'document',
   fields: [
     defineField({
       name: 'title',
-      title: 'Title',
+      title: 'Titel',
       type: 'string',
     }),
     defineField({
       name: 'slug',
-      title: 'Slug',
+      title: 'Beitrag-Link',
       type: 'slug',
       validation: (Rule) => Rule.required(),
       options: {
@@ -21,14 +21,8 @@ export default defineType({
       },
     }),
     defineField({
-      name: 'excerpt',
-      title: 'Excerpt',
-      type: 'text',
-      rows: 4,
-    }),
-    defineField({
       name: 'mainImage',
-      title: 'Main image',
+      title: 'Bild',
       type: 'image',
       options: {
         hotspot: true,
@@ -36,7 +30,7 @@ export default defineType({
     }),
     defineField({
       name: 'body',
-      title: 'Body',
+      title: 'Artikel',
       type: 'blockContent',
     }),
   ],

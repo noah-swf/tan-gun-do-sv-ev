@@ -5,10 +5,14 @@
 	import { urlFor } from '$lib/sanity/image';
 	import type { PageData } from './$types';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 	const q = useQuery(data);
 
-	$: ({ data: post } = $q);
+	let { data: post } = $derived($q);
 </script>
 
 <section class="post">
@@ -19,7 +23,7 @@
 			alt="Cover image for {post.title}"
 		/>
 	{:else}
-		<div class="post__cover--none" />
+		<div class="post__cover--none"></div>
 	{/if}
 	<div class="post__container">
 		<h1 class="post__title">{post.title}</h1>

@@ -3,7 +3,11 @@
 	import { urlFor } from '$lib/sanity/image';
 	import type { Post } from '$lib/sanity/queries';
 
-	export let post: Post;
+	interface Props {
+		post: Post;
+	}
+
+	let { post }: Props = $props();
 </script>
 
 <a class="card" href={`/post/${post.slug.current}`}>
@@ -14,7 +18,7 @@
 			alt="Cover image for {post.title}"
 		/>
 	{:else}
-		<div class="card__cover--none" />
+		<div class="card__cover--none"></div>
 	{/if}
 
 	<div class="card__container">
