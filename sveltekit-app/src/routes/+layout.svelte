@@ -2,6 +2,7 @@
 	import { isPreviewing, VisualEditing } from '@sanity/visual-editing/svelte';
 	import { page } from '$app/stores';
 	import LiveMode from '../components/LiveMode.svelte';
+	import "../app.css";
 	interface Props {
 		children?: import('svelte').Snippet;
 	}
