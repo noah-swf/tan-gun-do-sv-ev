@@ -12,14 +12,14 @@
 	"dependencies": {
 		"@sanity/client": "^6.15.4",
 		"@sanity/image-url": "^1.0.2",
-		"@sanity/svelte-loader": "^1.11.1",
+		"@sanity/svelte-loader": "^1.13.51",
 		"@sanity/visual-editing": "^3.0.5",
 		"@tailwindcss/vite": "^4.1.13",
 		"groq": "^3.33.0",
 		"tailwindcss": "^4.1.13"
 	},
 	"devDependencies": {
-		"@portabletext/svelte": "^2.1.11",
+		"@portabletext/svelte": "^3.0.1",
 		"@portabletext/types": "^2.0.13",
 		"@sanity/types": "^3.52.4",
 		"@sveltejs/adapter-auto": "^3.2.2",
