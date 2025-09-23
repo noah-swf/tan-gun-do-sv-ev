@@ -7,9 +7,11 @@
 	import Navbar from '../components/Navbar.svelte';
 	import Footer from '../components/footer.svelte';
 </script>
+
 <div class="font-poppins">
+
 <header class="header">
-<Navbar/>
+	<Navbar/>
 </header>
 
 <main>
@@ -19,6 +21,7 @@
 <footer class="footer">
 	<Footer/>
 </footer>
+
 </div>
 
 <style lang="postcss">
