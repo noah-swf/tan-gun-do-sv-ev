@@ -14,12 +14,4 @@
 	let { data: posts } = $derived($q);
 </script>
 
-<section>
-	{#if posts.length}
-		{#each posts as post}
-			<Card {post} />
-		{/each}
-	{:else}
-		<Welcome />
-	{/if}
-</section>
+

@@ -3,17 +3,23 @@
 	import { page } from '$app/stores';
 	import LiveMode from '../components/LiveMode.svelte';
 	import "../app.css";
-	import logo from '$lib/assets/logo.webp';
+
 	import Navbar from '../components/Navbar.svelte';
 	import Footer from '../components/footer.svelte';
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
 </script>
-<div class="font-poppins">
+
+<div class="flex flex-col min-h-screen font-poppins">
 <header class="header">
 <Navbar/>
 </header>
 
-<main>
-
+<main class="flex-grow">
+	{@render children?.()}
 </main>
 
 <footer class="footer">
@@ -22,7 +28,4 @@
 </div>
 
 <style lang="postcss">
-	main{
-		min-height: 100vh;
-	}
 </style>
