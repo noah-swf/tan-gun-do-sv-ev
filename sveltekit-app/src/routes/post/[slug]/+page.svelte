@@ -4,6 +4,12 @@
 	import { formatDate } from '$lib/utils';
 	import { urlFor } from '$lib/sanity/image';
 	import type { PageData } from './$types';
+	import ChevronLeft from '@lucide/svelte/icons/chevron-left';
+	import SanityImage from '../../../components/ui/SanityImage.svelte';
+	import CustomHeading from '../../../components/ui/SanityHeading.svelte';
+	import SanityBullet from '../../../components/ui/SanityBullet.svelte';
+	import SanityLink from '../../../components/ui/SanityLink.svelte';
+	import SanityQuote from '../../../components/ui/SanityQuote.svelte';
 
 	interface Props {
 		data: PageData;
@@ -15,128 +21,59 @@
 	let { data: post } = $derived($q);
 </script>
 
-<section class="post">
+
+
+<section class="min-w-screen absolute inset-x-0 p-10 md:p-16 lg:p-10">
+	<div class="max-w-4xl mx-auto ">
+		<a href="../" class="inline-flex items-center opacity-50 text-sm md:py-2 mb-2 hover:opacity-100" >
+			<ChevronLeft class="inline h-4 w-4 mr-1" />
+			Zurück
+		</a>
 	{#if post.mainImage}
-		<img
-			class="post__cover"
-			src={urlFor(post.mainImage).url()}
-			alt="Cover image for {post.title}"
-		/>
+		<div class="aspect-auto w-full md:my-4 my-2">
+			<img
+				class="h-full w-full rounded-md object-cover"
+				src={urlFor(post.mainImage).url()}
+				alt="Cover image for {post.title}"
+			/>
+		</div>
 	{:else}
-		<div class="post__cover--none"></div>
+		<div class=""></div>
 	{/if}
-	<div class="post__container">
-		<h1 class="post__title">{post.title}</h1>
-		{#if post.excerpt}
-			<p class="post__excerpt">{post.excerpt}</p>
-		{/if}
-		<p class="post__date">
-			{formatDate(post._createdAt)}
-		</p>
-		{#if post.body}
-			<div class="post__content">
-				<PortableText components={{}} value={post.body} />
-			</div>
-		{/if}
+		<div class="">
+			<p class="opacity-50 text-sm my-5 ">
+				{formatDate(post._createdAt)}
+			</p>
+			<h1 class="text-3xl font-semibold md:mt-5">{post.title}</h1>
+			
+			{#if post.body}
+				<div class="mt-5 prose prose-sm md:prose lg:prose-lg max-w-none">
+					<PortableText
+						value={post.body}
+						onMissingComponent={false}
+						components={{
+							block: {
+								h1: CustomHeading,
+								h2: CustomHeading,
+								h3: CustomHeading,
+								h4: CustomHeading,
+								h5: CustomHeading,
+								blockquote: SanityQuote,
+							},
+							marks: {
+								link: SanityLink,
+							},
+							list: {
+								bullet: SanityBullet,
+							},
+							types: {
+								image: SanityImage,
+							}
+							}}
+						/>
+				</div>
+			{/if}
+		</div>
 	</div>
+	
 </section>
-
-<style>
-	.post {
-		width: 100%;
-		margin: var(--space-1) 0 var(--space-4);
-	}
-
-	.post .post__cover,
-	.post .post__cover--none {
-		width: 100%;
-		height: 200px;
-		-o-object-fit: cover;
-		object-fit: cover;
-	}
-
-	.post .post__cover--none {
-		background: var(--black);
-	}
-
-	.post .post__container {
-		padding: 0 var(--space-3);
-	}
-
-	.post .post__content {
-		font-family: var(--font-family-serif);
-		font-weight: 400;
-		font-size: var(--font-size-4);
-		line-height: var(--line-height-5);
-		letter-spacing: -0.02em;
-		margin-top: var(--space-6);
-	}
-
-	.post .post__content blockquote {
-		border-left: 5px solid var(--black);
-		padding-left: var(--space-3);
-		margin-left: var(--space-4);
-	}
-
-	.post .post__content a {
-		color: var(--blue-600);
-		text-decoration: none;
-	}
-
-	.post .post__title {
-		font-family: var(--font-family-sans);
-		font-size: var(--font-size-7);
-		line-height: var(--line-height-6);
-		margin: var(--space-4) 0;
-		font-weight: 800;
-	}
-
-	.post .post__excerpt {
-		font-family: var(--font-family-serif);
-		font-size: var(--font-size-5);
-		line-height: var(--line-height-4);
-		margin-top: 0;
-		font-weight: 400;
-	}
-
-	.post .post__date {
-		font-family: var(--font-family-sans);
-		font-weight: 600;
-		font-family: var(--font-family-sans);
-		font-size: var(--font-size-1);
-		line-height: var(--line-height-1);
-		margin-top: var(--space-4);
-	}
-
-	@media (min-width: 800px) {
-		.post .post__cover,
-		.post .post__cover--none {
-			width: 750px;
-			height: 380px;
-		}
-
-		.post .post__title {
-			font-size: var(--font-size-10);
-			line-height: var(--line-height-10);
-			margin: var(--space-6) 0 0;
-			letter-spacing: -0.025em;
-		}
-
-		.post .post__excerpt {
-			font-size: var(--font-size-5);
-			line-height: var(--line-height-5);
-			margin-top: var(--space-3);
-			margin-bottom: var(--space-3);
-		}
-
-		.post .post__date {
-			font-size: var(--font-size-3);
-			line-height: var(--line-height-2);
-			margin-top: var(--space-0);
-		}
-
-		.post .post__content {
-			margin-top: var(--space-7);
-		}
-	}
-</style>
