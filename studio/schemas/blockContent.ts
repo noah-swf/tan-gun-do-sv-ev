@@ -15,7 +15,8 @@ export default defineType({
   name: 'blockContent',
   type: 'array',
   of: [
-    defineArrayMember({
+    defineArrayMember(
+      {
       title: 'Block',
       type: 'block',
       // Styles let you set what your user can mark up blocks with. These
@@ -55,6 +56,13 @@ export default defineType({
           },
         ],
       },
-    }),
+    },
+  ),  
+  defineArrayMember({
+    title: 'Bild',
+    type: 'image',
+    options: { hotspot: true },
+    fields: [{ name: 'alt', title: 'Alt-Text', type: 'string' }]
+  })
   ],
 })

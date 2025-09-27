@@ -10,6 +10,7 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"dependencies": {
+		"@lucide/svelte": "^0.544.0",
 		"@sanity/client": "^6.15.4",
 		"@sanity/image-url": "^1.0.2",
 		"@sanity/svelte-loader": "^1.13.51",
