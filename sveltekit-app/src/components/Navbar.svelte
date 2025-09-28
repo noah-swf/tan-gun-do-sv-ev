@@ -88,12 +88,12 @@
       		on:click={toggleMenu}
       		aria-label="Menü öffnen/schließen"
     	>
-      		<span class="block h-0.5 w-8 bg-black transform origin-left transition duration-300 ease-in-out" 
-			class:rotate-45={showMenu}></span>
+      		<span class="block h-0.5 w-8 bg-black transform origin-right transition duration-300 ease-in-out" 
+			class:-rotate-45={showMenu}></span>
       		<span class="block h-0.5 w-8 bg-black transition duration-300 ease-in-out" 
 			class:opacity-0={showMenu}></span>
-      		<span class="block h-0.5 w-8 bg-black transform origin-left transition duration-300 ease-in-out" 
-			class:-rotate-45={showMenu}></span>
+      		<span class="block h-0.5 w-8 bg-black transform origin-right transition duration-300 ease-in-out" 
+			class:rotate-45={showMenu}></span>
     	</button>
 	</div>
 

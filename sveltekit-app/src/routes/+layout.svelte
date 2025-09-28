@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { isPreviewing, VisualEditing } from '@sanity/visual-editing/svelte';
-	import { page } from '$app/stores';
 	import LiveMode from '../components/LiveMode.svelte';
 	import "../app.css";
 
@@ -14,18 +13,21 @@
 </script>
 
 <div class="flex flex-col min-h-screen font-poppins">
-<header class="header">
-<Navbar/>
-</header>
 
-<main class="flex-grow">
-	{@render children?.()}
-</main>
+	<header class="header">
+		<Navbar/>
+	</header>
 
-<footer class="footer">
-	<Footer/>
-</footer>
+	<main class="flex-grow">
+		{@render children?.()}
+	</main>
+
+	<footer class="footer">
+		<Footer/>
+	</footer>
+
 </div>
 
 <style lang="postcss">
+
 </style>
