@@ -5,31 +5,31 @@
         { href: '/impressum', name: 'Impressum' },
         { href: '/kontakt', name: 'Kontakt' }
     ]
+
+	let year = $state(new Date().getFullYear().toString());
 </script>
+<div class="p-10 pb-0">
 
-<hr class="border-t-1.5 border-gray-400 w-19/20 mx-auto my-2"/>
-<footer class="w-28/30 mx-auto my-4">
-  	<nav class="py-4 w-full">
-    	<div class="flex flex-col md:flex-row md:items-center md:justify-between">
-      
-      		<div class="flex items-center space-x-4">
-        		<img src={logo} alt="Logo Tan Gun Do" class="h-12 w-12" />
-        		<p class="text-sm md:text-base">
-          			<span class="block md:hidden">&copy; 2025 Tan Gun Do e.V.</span>
-          			<span class="hidden md:block">&copy; 2025 Tan Gun Do SV e.V.</span>
-        		</p>
-      		</div>
+<hr class="border-t-1.5 border-gray-300 w-full mx-auto mb-10 md:mb-0"/>
+<footer class="w-full mx-auto my-4">
+	<nav class="py-4 w-full">
+		<div class="flex flex-col md:flex-row md:items-center md:justify-between">
+			<div class="flex flex-col md:flex-row md:items-center space-x-4 space-y-4 md:space-y-0">
+				<img src={logo} alt="Logo Tan Gun Do" class="h-12 w-12" />
+				<p class="font-bold text-lg">&copy; {year} Tan Gun Do SV e.V.</p>
+			</div>
 
-      		<div class="flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0 mt-4 md:mt-0 md:items-center">
-        	{#each links as linkB}
-          		<a
-            		href={linkB.href}
-            		class="font-thin text-gray-600 hover:underline"
-          		>
-            		{linkB.name}
-          		</a>
-        	{/each}
-      		</div>
-    	</div>
-  	</nav>
+			<div class="flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0 mt-6 md:mt-0 md:items-center">
+			{#each links as linkB}
+				<a
+					href={linkB.href}
+					class="font-thin text-gray-600 hover:underline"
+				>
+					{linkB.name}
+				</a>
+			{/each}
+			</div>
+		</div>
+	</nav>
 </footer>
+</div>

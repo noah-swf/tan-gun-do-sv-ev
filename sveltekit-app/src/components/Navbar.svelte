@@ -5,7 +5,7 @@
 	import "../app.css";
 	import logo from '$lib/assets/logo.webp';
 
-    const links = [
+    let links = [
 		{ href: '/', name: 'Home' },
 		{ href: '/trainingszeiten', name: 'Trainingszeiten' },
 		{ href: '/news', name: 'News' },
@@ -43,67 +43,64 @@
         	{#if linkT.href !== '/kontakt'}
           	<a
             	href={linkT.href}
-            	class="px-3 py-1 rounded-lg transition hover:bg-gray-50 hover:rounded-xl hover:shadow-lg hover:shadow-gray-300/40 hover:text-black active:bg-gray-200"
-            	class:hover:text-red-700={$page.url.pathname === linkT.href}
-            	class:text-red-500={$page.url.pathname === linkT.href}
+            	class="px-2 py-1 rounded-lg transition hover:text-red active:text-red"
+            	class:hover:text-red-800={$page.url.pathname === linkT.href}
+            	class:text-red={$page.url.pathname === linkT.href}
           	>
             {linkT.name}
           	</a>
         	{:else}
-          	<div class="relative">
-            	<button
-              	class="flex items-center px-3 py-1 rounded-lg transition hover:bg-gray-50 hover:rounded-xl hover:shadow-lg hover:shadow-gray-300/40 hover:text-black active:bg-gray-200 focus:outline-none"
-				class:hover:text-gray-700={$page.url.pathname !== linkT.href}
-              	on:click={toggleDropdownDesktop}
-            	>
-              		{linkT.name}
-              		<svg
-                		class="w-4 h-4 ml-1 transform transition-transform duration-200"
-                		class:rotate-180={openDesktop}
-                		fill="none"
-                		stroke="currentColor"
-                		viewBox="0 0 24 24"
-              		>
-                		<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              		</svg>
-            	</button>
+          	<div class="relative group before:content-[''] before:absolute before:top-full before:left-0 before:right-0 before:h-2 before:pointer-events-auto">
+				<a
+					href={linkT.href}
+					class="flex items-center px-3 py-1 rounded-lg transition hover:text-black focus:outline-none"
+					aria-haspopup="true"
+				>
+					{linkT.name}
+					<svg
+					class="w-4 h-4 ml-2 transform transition-transform duration-200 group-hover:rotate-180 group-focus-within:rotate-180"
+					fill="none"
+					stroke="currentColor"
+					viewBox="0 0 24 24"
+					>
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+					</svg>
+				</a>
 
-            {#if openDesktop}
-              	<div class="absolute right-0 mt-2 w-48 bg-white text-gray-800 rounded-md shadow-lg z-10">
-                <a href="/kontakt" class="block px-4 py-2 hover:bg-gray-100" on:click={() => (openDesktop = false)}>
-                  	Kontaktformular
-                </a>
-                <a href="/probetraining" class="block px-4 py-2 hover:bg-gray-100" on:click={() => (openDesktop = false)}>
-                  	Probetraining vereinbaren
-                </a>
-              	</div>
-            {/if}
-        	</div>
+				<!-- Dropdown -->
+				<div
+					class="absolute right-0 top-full w-3xs py-2 mt-2 bg-white text-gray-800 border border-gray-300 rounded-md shadow-lg z-10 hidden group-hover:block group-focus-within:block"
+					role="menu"
+				>
+					<a href="/kontakt" class="block px-4 py-2 hover:text-red" role="menuitem">Kontaktformular</a>
+					<a href="/probetraining" class="block px-4 py-2 hover:text-red" role="menuitem">Probetraining vereinbaren</a>
+				</div>
+				</div>
+
     		{/if}
       	{/each}
     	</div>
 
     	<button
-      		class="md:hidden px- flex flex-col justify-between w-6 h-6 focus:outline-none"
+      		class="md:hidden flex flex-col justify-between w-6 h-4 focus:outline-none"
       		on:click={toggleMenu}
       		aria-label="Menü öffnen/schließen"
     	>
-      		<span class="block h-0.5 w-8 bg-black transform origin-right transition duration-300 ease-in-out" 
+      		<span class="block h-0.5 w-5 bg-black transform origin-right transition duration-300 ease-in-out" 
 			class:-rotate-45={showMenu}></span>
-      		<span class="block h-0.5 w-8 bg-black transition duration-300 ease-in-out" 
+      		<span class="block h-0.5 w-5 bg-black transition duration-300 ease-in-out" 
 			class:opacity-0={showMenu}></span>
-      		<span class="block h-0.5 w-8 bg-black transform origin-right transition duration-300 ease-in-out" 
+      		<span class="block h-0.5 w-5 bg-black transform origin-right transition duration-300 ease-in-out" 
 			class:rotate-45={showMenu}></span>
     	</button>
 	</div>
 
 	{#if showMenu}
-    <div class="md:hidden mt-10 space-y-4">
-      	{#each links as linkT}
-        	{#if linkT.href !== '/kontakt'}
+    <div class="md:hidden mt-20 space-y-4 h-screen bg-white">
+      	{#each links.concat([{ href: '/probetraining', name: 'Probetraining' }]) as linkT}
           	<a
             	href={linkT.href}
-            	class="block text-xl font-medium px-1 py-1 ml-1 rounded-lg transition text-gray-400 hover:bg-gray-100 active:bg-gray-200"
+            	class="block text-xl font-medium p-1 ml-1 rounded-lg transition text-gray-400 hover:bg-gray-100 active:bg-gray-200"
             	class:hover:text-gray-700={$page.url.pathname !== linkT.href}
             	class:hover:text-red-700={$page.url.pathname === linkT.href}
             	class:text-red-500={$page.url.pathname === linkT.href}
@@ -111,36 +108,6 @@
           	>
             	{linkT.name}
           	</a>
-        	{:else}
-          	<div>
-            	<button
-              		class="flex items-center w-full px-1 py-1 ml-1 text-xl font-medium text-gray-700 rounded-lg"
-              		on:click={toggleDropdownMobile}
-           	 	>
-              		{linkT.name}
-              		<svg
-                		class="w-4 h-4 ml-1 transform transition-transform duration-200"
-                		class:rotate-180={openMobile}
-                		fill="none"
-                		stroke="currentColor"
-                		viewBox="0 0 24 24"
-              		>
-                		<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              		</svg>
-            	</button>
-
-            {#if openMobile}
-              	<div class="ml-6 mt-4 text-lg font-medium space-y-1">
-                	<a href="/kontakt" class="block py-1 text-gray-500 hover:underline" on:click={() => { openMobile = false; showMenu = false }}>
-                  		Kontaktformular
-                	</a>
-                	<a href="/probetraining" class="block py-1 text-gray-500 hover:underline" on:click={() => { openMobile = false; showMenu = false }}>
-                  		Probetraining vereinbaren
-                	</a>
-              	</div>
-            {/if}
-          	</div>
-        	{/if}
       	{/each}
     </div>
   	{/if}

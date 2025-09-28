@@ -31,7 +31,7 @@
 </script>
 
 {#if posts.length}
-<div class="min-w-screen absolute inset-x-0 p-10 md:p-16 lg:p-10 bg-[#E6EDF6]/50">
+<div class="min-w-screen relative inset-x-0 p-10 md:p-16 lg:p-10 bg-[#E6EDF6]/50">
   <!-- Hintergrundbilder -->
   <img src={sktl} alt="" class="hidden md:block absolute top-5 left-5 w-20 lg:opacity-25 md:opacity-10" />
   <img src={sktr} alt="" class="hidden md:block absolute top-5 right-5 w-20 lg:opacity-25 md:opacity-10" />
