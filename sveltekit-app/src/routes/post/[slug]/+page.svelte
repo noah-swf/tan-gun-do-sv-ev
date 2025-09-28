@@ -23,7 +23,7 @@
 
 
 
-<section class="min-w-screen absolute inset-x-0 p-10 md:p-16 lg:p-10">
+<section class="min-w-screen inset-x-0 p-10 md:p-16 lg:p-10">
 	<div class="max-w-4xl mx-auto ">
 		<a href="../" class="inline-flex items-center opacity-50 text-sm md:py-2 mb-2 hover:opacity-100" >
 			<ChevronLeft class="inline h-4 w-4 mr-1" />
