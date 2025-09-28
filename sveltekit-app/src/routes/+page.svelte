@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { useQuery } from '@sanity/svelte-loader';
-	import Card from '../components/Card.svelte';
-	import Welcome from '../components/Welcome.svelte';
+
 	import type { PageData } from './$types';
+	import NewsSection from '../components/sections/NewsSection.svelte';
 
 	interface Props {
 		data: PageData;
@@ -12,6 +12,9 @@
 	const q = useQuery(data);
 
 	let { data: posts } = $derived($q);
+
 </script>
 
-
+<section>
+	<NewsSection {posts} />
+</section>
