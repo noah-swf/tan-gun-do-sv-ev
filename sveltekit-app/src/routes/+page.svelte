@@ -3,6 +3,7 @@
 
 	import type { PageData } from './$types';
 	import NewsSection from '../components/sections/NewsSection.svelte';
+	import Map from '../components/Map.svelte';
 
 	interface Props {
 		data: PageData;
@@ -17,4 +18,7 @@
 
 <section>
 	<NewsSection {posts} />
+</section>
+<section>
+	<Map />
 </section>
