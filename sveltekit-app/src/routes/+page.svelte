@@ -19,6 +19,7 @@
 <section>
 	<NewsSection {posts} />
 </section>
+
 <section>
 	<Map />
 </section>
