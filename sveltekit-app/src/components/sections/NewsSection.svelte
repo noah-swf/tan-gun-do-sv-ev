@@ -11,6 +11,7 @@
   import sktr from '$lib/assets/bg/SK_tr.webp';
   import skbl from '$lib/assets/bg/SK_bl.webp';
   import skbr from '$lib/assets/bg/SK_br.webp';
+	import ButtonOutlined from '../ui/ButtonOutlined.svelte';
 
   export let posts: Post[] = [];
 
@@ -101,7 +102,6 @@
                   aria-label="Nach links"
                   title="Nach links"
               >
-                  <!-- dein Icon -->
                   <ChevronLeft color="var(--color-red)" class="w-5 h-5 text-gray-600" />
               </button>
           </div>
@@ -109,11 +109,10 @@
     </div>
 
     <!-- Mobile "Mehr anzeigen" -->
-    <div class="md:hidden mt-4  text-center">
-      <a href="/news" class="flex items-center justify-center text-center gap-1 text-xs text-red border border-red bg-white rounded w-full px-6 py-2 hover:bg-gray-50 font-semibold">
-        Mehr anzeigen →
-      </a>
+    <div class="md:hidden mt-4">
+      <ButtonOutlined href="/news" text="Mehr anzeigen"/>
     </div>
+    
 
   </div>
 </div>

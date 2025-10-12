@@ -4,7 +4,7 @@
 	import "../app.css";
 
 	import Navbar from '../components/Navbar.svelte';
-	import Footer from '../components/footer.svelte';
+	import Footer from '../components/Footer.svelte';
 	interface Props {
 		children?: import('svelte').Snippet;
 	}

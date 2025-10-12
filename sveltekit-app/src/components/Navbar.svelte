@@ -22,23 +22,21 @@
 		showMenu = !showMenu;
 	}
 
-	function toggleDropdownDesktop(){
-		openDesktop = !openDesktop;
-	}
-	function toggleDropdownMobile(){
-		openMobile = !openMobile;
+	// toggelt eine Klasse auf <html>, sobald showMenu true/false wird
+	$: if (showMenu) {
+		document.documentElement.classList.toggle('overflow-hidden', showMenu);
 	}
 </script>
 
-<nav class="px-8 py-6">
+<nav class="px-8 py-6 bg-white z-50 relative">
   	<div class="flex justify-between items-center w-full">
     	<div class="flex items-center space-x-3">
     	  	<img src={logo} alt="Logo Tan Gun Do" width="50" height="50" />
-    	  	<h1 class="hidden md:block">Tan Gun Do Selbstverteidigung e.V</h1>
+    	  	<h1 class="hidden lg:block">Tan Gun Do Selbstverteidigung e.V</h1>
     	</div>
 
 
-    	<div class="hidden md:flex space-x-6 items-center">
+    	<div class="hidden lg:flex space-x-6 items-center">
       	{#each links as linkT}
         	{#if linkT.href !== '/kontakt'}
           	<a
@@ -82,7 +80,7 @@
     	</div>
 
     	<button
-      		class="md:hidden flex flex-col justify-between w-6 h-4 focus:outline-none"
+      		class="lg:hidden flex flex-col justify-between w-6 h-4 focus:outline-none"
       		on:click={toggleMenu}
       		aria-label="Menü öffnen/schließen"
     	>
@@ -96,11 +94,11 @@
 	</div>
 
 	{#if showMenu}
-    <div class="md:hidden mt-20 space-y-4 h-screen bg-white">
+    <div class="lg:hidden mt-20 space-y-4 h-screen bg-white">
       	{#each links.concat([{ href: '/probetraining', name: 'Probetraining' }]) as linkT}
           	<a
             	href={linkT.href}
-            	class="block text-xl font-medium p-1 ml-1 rounded-lg transition text-gray-400 hover:bg-gray-100 active:bg-gray-200"
+            	class="block text-xl font-medium p-1 ml-1 transition text-gray-400 hover:bg-gray-100 active:bg-gray-200"
             	class:hover:text-gray-700={$page.url.pathname !== linkT.href}
             	class:hover:text-red-700={$page.url.pathname === linkT.href}
             	class:text-red-500={$page.url.pathname === linkT.href}
