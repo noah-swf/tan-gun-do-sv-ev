@@ -1,5 +1,5 @@
-<hr class="border-t-1.5 border-gray-200 mx-10 mt-30 md:mb-0"/>
-<section class="flex flex-col md:flex-row justify-center gap-10 my-30 px-8">
+<hr class="border-t-1.5 border-gray-200 mx-10 mt-20 md:mt-30 md:mb-0"/>
+<section class="flex flex-col md:flex-row justify-center gap-10 my-20 md:my-30 px-8">
   <div class="flex flex-col">
     <h1 class="text-2xl font-semibold text-gray-800 mb-4">Unser Dojang</h1>
     <iframe
@@ -10,7 +10,7 @@
       title="Karte und Anfahrt"></iframe>
   </div>
 
-  <div class="flex flex-col text-center justify-center md:text-left h-[300px] md:h-[600px] md:self-end">
+  <div class="flex flex-col text-center justify-center md:text-left md:h-[300px] md:self-end">
     <p class="font-semibold">GSG Jugendhalle Schonnebeck</p>
     <p class="font-thin text-gray-500 mb-7">Saatbruchstraße 52, 45309 Essen Schonnebeck</p>
     <a href="https://www.google.com/maps/dir//Saatbruchstra%C3%9Fe+52+45309+Essen/@51.4848194,7.0624058,18z/data=!4m8!4m7!1m0!1m5!1m1!1s0x47b8e791702e62c3:0xf8c8ffd3cc55eb8!2m2!1d7.0624058!2d51.4848194?entry=ttu&g_ep=EgoyMDI1MDkyNC4wIKXMDSoASAFQAw%3D%3D" 
