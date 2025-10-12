@@ -21,10 +21,8 @@ export default defineType({
           type: 'object',
           fields: [
             {name: 'image', type: 'image', options: {hotspot: true}},
-            {name: 'alt', type: 'string'},
-            {name: 'caption', type: 'text'},
-            {name: 'link', type: 'url'},
-            {name: 'durationMs', type: 'number', description: 'Optional pro Slide'}
+            {name: 'alt', type: 'string', description: 'Bildbeschreibung für Barrierefreiheit'},
+            {name: 'durationInMs', type: 'number', description: 'Optional pro Slide (default 5000ms)'},
           ]
         }
       ]

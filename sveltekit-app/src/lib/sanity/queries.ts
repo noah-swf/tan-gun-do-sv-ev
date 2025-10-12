@@ -36,8 +36,6 @@ export interface Post {
 export interface HeroSlide {
 	_key?: string;
 	alt?: string;
-	caption?: string;
-	link?: string;
 	durationMs?: number;
 	image?: Image;
 }
