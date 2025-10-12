@@ -8,9 +8,9 @@
 
 	let year = $state(new Date().getFullYear().toString());
 </script>
-<div class="p-10 pb-0">
+<div class="p-10">
 
-<hr class="border-t-1.5 border-gray-300 w-full mx-auto mb-10 md:mb-0"/>
+<hr class="border-t-1.5 border-gray-300 mb-10 md:mb-0"/>
 <footer class="w-full mx-auto my-4">
 	<nav class="py-4 w-full">
 		<div class="flex flex-col md:flex-row md:items-center md:justify-between">

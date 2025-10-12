@@ -5,6 +5,7 @@
 	import NewsSection from '../components/sections/NewsSection.svelte';
 	import HeroSection from '../components/sections/HeroSection.svelte';
 	import type { HeroContent, HomePagePayload, Post } from '$lib/sanity/queries';
+	import Map from '../components/Map.svelte';
 
 	interface Props {
 		data: PageData;
@@ -23,4 +24,5 @@
 <section>
 		<HeroSection {hero} />
 		<NewsSection {posts} />
+    <Map />
 </section>
