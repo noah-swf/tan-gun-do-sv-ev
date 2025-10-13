@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { useQuery } from '@sanity/svelte-loader';
 
-	import type { PageData } from './$types';
 	import NewsSection from '../components/sections/NewsSection.svelte';
 	import HeroSection from '../components/sections/HeroSection.svelte';
+	import EventSection from '../components/sections/EventSection.svelte';
+	import MapSection from '../components/sections/MapSection.svelte';
+	
+	import type { PageData } from './$types';
 	import type { HeroContent, HomePagePayload, Post } from '$lib/sanity/queries';
-	import Map from '../components/sections/MapSection.svelte';
 
 	interface Props {
 		data: PageData;
@@ -18,11 +20,13 @@
 
 	let posts: Post[] = $derived(homeData?.posts ?? []);
 	let hero: HeroContent | null = $derived(homeData?.hero ?? null);
+	let events = $derived(homeData?.events ?? []);
 
 </script>
 
 <section>
-		<HeroSection {hero} />
-		<NewsSection {posts} />
-    <Map />
+	<HeroSection {hero} />
+	<NewsSection {posts} />
+	<EventSection {events} />
+    <MapSection />
 </section>
