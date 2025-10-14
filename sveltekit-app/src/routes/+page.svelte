@@ -22,7 +22,7 @@
 </script>
 
 <section>
-		<HeroSection {hero} />
-		<NewsSection {posts} />
+	<HeroSection {hero} />
+	<NewsSection {posts} />
     <Map />
 </section>

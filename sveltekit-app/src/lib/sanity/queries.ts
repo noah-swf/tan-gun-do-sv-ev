@@ -23,6 +23,31 @@ export const homePageQuery = groq`{
   "posts": ${postsQuery}
 }`;
 
+export const trainingszeitenQuery = groq`
+	*[_type == "trainingszeiten"] | order(_createdAt asc) {
+	  _id,
+	  day,
+	  units[]{
+	    ageGroup,
+	    timeslot,
+	    location,
+	    trainer
+	}
+  }`;
+
+export interface units{
+	ageGroup: string;
+	timeslot: string;
+	location?: string;
+	trainer?: string;
+}
+
+export interface Trainingszeiten {
+	_id?: string;
+	day: ('monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday');
+	units: units[];
+}
+
 export interface Post {
 	_type: 'newsPost';
 	_createdAt: string;
