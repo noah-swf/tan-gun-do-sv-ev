@@ -1,5 +1,5 @@
-<hr class="border-t-1.5 border-gray-200 mt-20 md:mb-0 max-w-6xl mx-auto"/>
-<section class="flex flex-col md:flex-row justify-center gap-10 my-20 md:my-30 max-w-6xl mx-auto">
+<hr class="border-t-1.5 border-gray-200 mt-20 md:mb-0 max-w-6xl mx-6 md:mx-auto"/>
+<section class="flex flex-col md:flex-row justify-center gap-10 my-20 md:my-30 max-w-6xl mx-auto px-6 md:px-0">
   <div class="flex flex-col">
     <h1 class="text-2xl font-semibold text-gray-800 mb-4">Unser Dojang</h1>
     <iframe
