@@ -6,21 +6,23 @@ export const postQuery = groq`*[_type == "newsPost" && slug.current == $slug][0]
 
 export const postsQuery = groq`*[_type == "newsPost" && defined(slug.current)] | order(_createdAt desc)[0...9]`; // Fetch the 9 most recent posts
 
+export const eventsQuery = groq`*[_type == "event"] | order(date asc)[0...2]`;
+
 export const homePageQuery = groq`{
-  "hero": *[_type == "heroSection"] | order(_createdAt desc)[0] {
-    _id,
-    title,
-    subtitle,
-    slides[]{
-      _key,
-      alt,
-      caption,
-      link,
-      durationMs,
-      image
-    }
-  },
-  "posts": ${postsQuery}
+	"hero": *[_type == "heroSection"] | order(_createdAt desc)[0] {
+		_id,
+		title,
+		subtitle,
+		slides[]{
+			_key,
+			alt,
+			link,
+			durationMs,
+			image
+		}
+	},
+	"posts": ${postsQuery},
+	"events": ${eventsQuery}
 }`;
 
 export interface Post {
@@ -50,4 +52,13 @@ export interface HeroContent {
 export interface HomePagePayload {
 	hero: HeroContent | null;
 	posts: Post[];
+	events: Event[];
+}
+
+export interface Event {
+	_id: string;
+	title?: string;
+	date?: string;
+	ort?: string;
+	comment?: string;
 }
