@@ -7,7 +7,12 @@
 	import MapSection from '../components/sections/MapSection.svelte';
 	
 	import type { PageData } from './$types';
-	import type { HeroContent, HomePagePayload, Post } from '$lib/sanity/queries';
+	import type {
+		HeroContent,
+		HomePagePayload,
+		Post,
+		Event as SanityEvent
+	} from '$lib/sanity/queries';
 
 	interface Props {
 		data: PageData;
@@ -20,7 +25,7 @@
 
 	let posts: Post[] = $derived(homeData?.posts ?? []);
 	let hero: HeroContent | null = $derived(homeData?.hero ?? null);
-	let events = $derived(homeData?.events ?? []);
+	let events: SanityEvent[] = $derived(homeData?.events ?? []);
 
 </script>
 
