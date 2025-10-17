@@ -1,10 +1,17 @@
 <script lang="ts">
-  let props = $props();
-  
+  import type { Snippet } from 'svelte';
+
+  let { children, href }: { children : Snippet, href: string } = $props() 
 </script>
 
 <a 
-href={props.href} 
+href={href} 
 class="flex items-center justify-center text-center gap-1 text-xs text-white border border-red bg-red rounded w-full px-6 py-2 hover:bg-red-800 font-semibold cursor-pointer duration-200">
-{props.text}
+
+{#if children}
+	{@render children()}
+{:else}
+	<p>Whoops, something went wrong.</p>
+{/if}
+
 </a>
