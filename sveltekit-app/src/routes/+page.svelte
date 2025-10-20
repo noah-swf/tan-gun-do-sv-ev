@@ -37,5 +37,5 @@
 	<HeroSection {hero} />
 	<NewsSection {posts} />
 	<EventSection {events} />
-    <MapSection />
+  <MapSection />
 </section>
