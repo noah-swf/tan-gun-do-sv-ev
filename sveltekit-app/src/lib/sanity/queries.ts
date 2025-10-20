@@ -39,7 +39,6 @@ export interface units{
 	ageGroup: string;
 	timeslot: string;
 	location?: string;
-	trainer?: string;
 }
 
 export interface Trainingszeiten {

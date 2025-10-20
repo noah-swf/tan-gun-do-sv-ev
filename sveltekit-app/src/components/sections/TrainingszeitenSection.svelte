@@ -4,7 +4,8 @@
     import {trainingszeitenQuery} from '$lib/sanity/queries';
     import Clock from '@lucide/svelte/icons/clock-4';
     import Pin from '@lucide/svelte/icons/map-pin';
-    import Person from '@lucide/svelte/icons/person-standing';
+    import Person from '@lucide/svelte/icons/user';
+    import Flag from '@lucide/svelte/icons/corner-down-right';
 
     type Unit = {
         ageGroup: string;
@@ -60,16 +61,16 @@
 
 
     {#each trainingszeiten as day}
-        <section class="mb-12">
+        <section class="mb-10">
             <h2 class="text-2xl font-semibold mb-6 capitalize">{day.day}</h2>
             
 
-            <div class="flex flex-wrap gap-6 justify-start">
+            <div class="flex flex-wrap gap-8 justify-start">
 
                 {#each day.units as unit}
-                    <div class="border border-gray-300 rounded-xl p-4 w-100">
+                    <div class="border border-gray-300 rounded-xl p-4 w-100 space-y-1">
                         <p class="font-bold text-lg">{unit.ageGroup}</p>
-                        <hr class="border-t-1.5 border-gray-300 my-2">
+                        <hr class="border-t-1.5 border-gray-300 mb-4 mt-2">
                         <div class="flex items-center">
                             <Clock color="var(--color-red)" class="w-5 h-5 mr-2"/>
                             <p class="text-gray-700">{unit.timeslot}</p>
@@ -78,12 +79,11 @@
                             <Pin color="var(--color-red)" class="w-5 h-5 mr-2"/>
                             <p class="text-gray-700">{unit.location}</p>
                         </div>
-                        <div class="flex items-center">
-                            <Person color="var(--color-red)" class="w-5 h-5 mr-2"/>
-                            <p class="text-gray-700">Trainer: {unit.trainer}</p>
-                        </div>
                         {#if day.day === 'Samstag'}
-                            <p class="text-sm text-gray-500 mt-2"><strong>Kapftraining:</strong> Schutzausrüstung mitbringen</p>
+                        <div class="flex items-center">
+                        <Flag color="var(--color-red)" class="w-5 h-5 mr-2 mt-2"/>
+                        <p class="text-sm text-gray-500 mt-2"><strong>Kampftraining:</strong> Schutzausrüstung mitbringen</p>
+                        </div>
                         {/if}
                     </div>
                 {/each}
