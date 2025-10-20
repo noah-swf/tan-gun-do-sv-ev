@@ -31,7 +31,7 @@
     });
 </script>
 
-<section class="px-6 md:px-10 mt-10 max-w-6xl mx-auto">
+<section class="px-6 md:p-0 mt-10 max-w-6xl mx-auto">
     <div class="hidden md:flex justify-between items-center mb-10">
       <h1 class="text-2xl font-semibold text-gray-800">Unsere Trainingszeiten</h1>
       <a href="/news" class="group inline-flex items-center gap-1 text-sm opacity-50 duration-200 text-black hover:opacity-100">
