@@ -33,7 +33,7 @@ export const trainingszeitenQuery = groq`
 	    ageGroup,
 	    timeslot,
 	    location,
-	    trainer
+	    comment
 	}
   }`;
 
