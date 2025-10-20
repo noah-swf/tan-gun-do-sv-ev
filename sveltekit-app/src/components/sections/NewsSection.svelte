@@ -110,7 +110,7 @@
 
     <!-- Mobile "Mehr anzeigen" -->
     <div class="md:hidden mt-4">
-      <ButtonOutlined href="/news" text="Mehr anzeigen"/>
+      <ButtonOutlined href="/news">Mehr anzeigen</ButtonOutlined>
     </div>
     
 

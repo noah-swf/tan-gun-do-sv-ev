@@ -29,6 +29,10 @@
 
 </script>
 
+<svelte:head>
+	<title>Home | Tan-Gun-Do</title>
+</svelte:head>
+
 <section>
 	<HeroSection {hero} />
 	<NewsSection {posts} />

@@ -2,11 +2,11 @@
     import { onDestroy, tick } from 'svelte';
     import ButtonFilled from '../ui/ButtonFilled.svelte';
     import ButtonOutlined from '../ui/ButtonOutlined.svelte';
-    import ChevronRight from '@lucide/svelte/icons/chevron-right';
-    import ChevronLeft from '@lucide/svelte/icons/chevron-left';
     import { urlFor } from '$lib/sanity/image';
     import type { HeroContent, HeroSlide } from '$lib/sanity/queries';
     import logo from '$lib/assets/logo.webp';
+	import ButtonLeft from '../ui/ButtonLeft.svelte';
+	import ButtonRight from '../ui/ButtonRight.svelte';
 
     interface Props {
         hero: HeroContent | null;
@@ -199,8 +199,8 @@
             </h1>
             <p class="opacity-50">{computedSubtitle}</p>
             <div class="flex flex-col lg:flex-row space-x-3 space-y-3 mt-7 lg:mt-0 lg:space-y-0">
-                <ButtonFilled href="/probetraining" text="Jetzt mitmachen" />
-                <ButtonOutlined href="/trainingszeiten" text="Trainingszeiten ansehen" />
+                <ButtonFilled href="/probetraining">Jetzt mitmachen</ButtonFilled>
+                <ButtonOutlined href="/trainingszeiten">Trainingszeiten ansehen</ButtonOutlined>
             </div>
         </div>
         <img src={logo} alt="Tan Gun Do Logo" class="absolute left-0 lg:left-1/4 top-[52vh] lg:top-[5vh] -z-1 lg:w-xl w-40 opacity-10" />
@@ -236,22 +236,8 @@
             {/if}
         </div>
         <div class="flex flex-row justify-end space-x-4 absolute lg:relative right-3 top-[45vh] lg:top-0 lg:right-0 float-right">
-            <button
-                class="rounded border border-gray-300 bg-white/70 hover:bg-white hover:cursor-pointer p-2 z-1"
-                aria-label="Nach links"
-                title="Nach links"
-                onclick={goToPrevious}
-            >
-                <ChevronLeft color="var(--color-red)" class="w-5 h-5 text-gray-600" />
-            </button>
-            <button
-                class="rounded border border-gray-300 bg-white/70 hover:bg-white hover:cursor-pointer p-2 z-1"
-                aria-label="Nach rechts"
-                title="Nach rechts"
-                onclick={goToNext}
-            >
-                <ChevronRight color="var(--color-red)" class="w-5 h-5 text-gray-600" />
-            </button>
+            <ButtonLeft onclick={goToPrevious} />
+            <ButtonRight onclick={goToNext}/>
         </div>
     </div>
 </div>

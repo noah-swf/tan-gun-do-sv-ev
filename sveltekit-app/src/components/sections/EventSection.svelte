@@ -117,8 +117,8 @@
                 Aktuell sind keine Events geplant. Schau gern bald wieder vorbei!
             </div>
         {/if}
-        <div class="md:hidden">
-            <ButtonOutlined href="/termine" text="Alle Termine ansehen" class="mx-auto"/>
+        <div class="md:hidden mx-auto">
+            <ButtonOutlined href="/termine">Alle Termine ansehen</ButtonOutlined>
         </div>
     </div>
 </section>
