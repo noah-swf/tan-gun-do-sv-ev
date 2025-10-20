@@ -32,14 +32,14 @@
 </script>
 
 {#if posts.length}
-<div class="min-w-screen relative inset-x-0 p-10 md:p-16 lg:p-10 bg-[#E6EDF6]/50">
+<div class="min-w-screen px-6 mt-20 md:mt-30 md:px-10 py-10 relative inset-x-0 bg-[#E6EDF6]/50">
   <!-- Hintergrundbilder -->
   <img src={sktl} alt="" class="hidden md:block absolute top-5 left-5 w-20 lg:opacity-25 md:opacity-10" />
   <img src={sktr} alt="" class="hidden md:block absolute top-5 right-5 w-20 lg:opacity-25 md:opacity-10" />
   <img src={skbl} alt="" class="hidden md:block absolute bottom-5 left-5 w-20 lg:opacity-25 md:opacity-10" />
   <img src={skbr} alt="" class="hidden md:block absolute bottom-5 right-5 w-20 lg:opacity-25 md:opacity-10" />
 
-  <div class="relative max-w-5xl mx-auto">
+  <div class="relative max-w-6xl mx-auto">
     <!-- Desktop Header -->
     <div class="hidden md:flex justify-between items-center mb-6">
       <h1 class="text-2xl font-semibold text-gray-800">News</h1>
@@ -110,7 +110,7 @@
 
     <!-- Mobile "Mehr anzeigen" -->
     <div class="md:hidden mt-4">
-      <ButtonOutlined href="/news" text="Mehr anzeigen"/>
+      <ButtonOutlined href="/news">Mehr anzeigen</ButtonOutlined>
     </div>
     
 

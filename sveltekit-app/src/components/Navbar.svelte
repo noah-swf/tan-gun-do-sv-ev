@@ -4,6 +4,7 @@
 	import LiveMode from '../components/LiveMode.svelte';
 	import "../app.css";
 	import logo from '$lib/assets/logo.webp';
+	import { afterNavigate } from '$app/navigation';
 
     let links = [
 		{ href: '/', name: 'Home' },
@@ -15,20 +16,22 @@
 	]
 
     let showMenu = false;
-	let openDesktop = false;
-	let openMobile = false;
 
 	function toggleMenu() {
 		showMenu = !showMenu;
-	}
 
-	// toggelt eine Klasse auf <html>, sobald showMenu true/false wird
-	$: if (showMenu) {
+		// Verhindert Scrollen, wenn das mobile Menü geöffnet ist
 		document.documentElement.classList.toggle('overflow-hidden', showMenu);
 	}
+
+	afterNavigate(() => {
+		// Erlaubt Scrollen wieder, wenn zu einer neuen Seite navigiert wird
+		document.documentElement.classList.remove('overflow-hidden');
+	});
+
 </script>
 
-<nav class="px-8 py-6 bg-white z-50 relative">
+<nav class="px-6 lg:px-8 py-6 bg-white z-50 relative">
   	<div class="flex justify-between items-center w-full">
     	<div class="flex items-center space-x-3">
     	  	<img src={logo} alt="Logo Tan Gun Do" width="50" height="50" />
