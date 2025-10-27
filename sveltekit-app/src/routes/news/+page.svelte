@@ -1,11 +1,8 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import { goto } from '$app/navigation';
-    import { page } from '$app/stores';
     import NewsCard from '$lib/../components/ui/NewsCard.svelte';
-    import ButtonLeft from '$lib/../components/ui/ButtonLeft.svelte';
-    import ButtonRight from '$lib/../components/ui/ButtonRight.svelte';
-    import ButtonOutlined from '../../components/ui/ButtonOutlined.svelte';
+    import PaginationControls from '../../components/ui/PaginationControls.svelte';
     import type { PageData } from './$types';
 
     const POSTS_PER_PAGE = 6;
@@ -51,7 +48,7 @@
 </script>
 
 <div class="container mx-auto px-6 lg:px-4 py-8 max-w-6xl">
-    <h1 class="text-2xl font-semibold text-gray-800">Aktuelles</h1>
+    <h1 class="text-2xl font-semibold text-gray-800 mb-2">Aktuelles</h1>
     <p class="opacity-50 mb-10">
         Bleibe auf dem Laufenden mit den neuesten Nachrichten und Updates aus unserem Verein.
     </p>
@@ -68,42 +65,14 @@
             {/each}
         </div>
 
-        <!-- Desktop Pagination -->
-        {#if !isMobile && totalPages > 1}
-            <div class="flex justify-end gap-2">
-                <ButtonLeft 
-                    onclick={() => goToPage(currentPage - 1)}
-                    disabled={currentPage === 0 || loading}
-                />
-                
-                <div class="flex gap-1">
-                    {#each Array(totalPages) as _, index}
-                        <button
-                            class="px-4 py-1 rounded transition-colors duration-200 hover:cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed {currentPage === index 
-                                ? 'bg-red text-white' 
-                                : 'bg-gray-100 hover:bg-gray-300'}"
-                            onclick={() => goToPage(index)}
-                            disabled={loading}
-                        >
-                            {index + 1}
-                        </button>
-                    {/each}
-                </div>
-                
-                <ButtonRight 
-                    onclick={() => goToPage(currentPage + 1)}
-                    disabled={currentPage === totalPages - 1 || loading}
-                />
-            </div>
-        {/if}
-
-        <!-- Mobile Load More -->
-        {#if isMobile && hasMorePosts}
-            <div class="flex justify-center">
-                <ButtonOutlined onclick={loadMoreMobile} >
-                    {loading ? 'Lädt...' : 'Mehr anzeigen'}
-                </ButtonOutlined>
-            </div>
-        {/if}
+        <PaginationControls
+            {isMobile}
+            {loading}
+            currentPage={currentPage}
+            totalPages={totalPages}
+            hasMore={hasMorePosts}
+            onSelectPage={goToPage}
+            onLoadMore={loadMoreMobile}
+        />
     {/if}
 </div>

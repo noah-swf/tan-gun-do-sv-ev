@@ -33,10 +33,10 @@
 
 <nav class="px-6 lg:px-8 py-6 bg-white z-50 relative">
   	<div class="flex justify-between items-center w-full">
-    	<div class="flex items-center space-x-3">
+    	<a class="flex items-center space-x-3" href="/">
     	  	<img src={logo} alt="Logo Tan Gun Do" width="50" height="50" />
     	  	<h1 class="hidden lg:block">Tan Gun Do Selbstverteidigung e.V</h1>
-    	</div>
+		</a>
 
 
     	<div class="hidden lg:flex space-x-6 items-center">

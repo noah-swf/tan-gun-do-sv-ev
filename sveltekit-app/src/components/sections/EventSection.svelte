@@ -1,58 +1,18 @@
 <script lang="ts">
     import type { Event as SanityEvent } from '$lib/sanity/queries';
-    import CalendarDays from '@lucide/svelte/icons/calendar-days';
-    import Clock from '@lucide/svelte/icons/clock-4';
-    import MapPin from '@lucide/svelte/icons/map-pin';
-    import MessageSquare from '@lucide/svelte/icons/message-square';
-	import ButtonOutlined from '../ui/ButtonOutlined.svelte';
+    import ButtonOutlined from '../ui/ButtonOutlined.svelte';
+    import EventCard from '../ui/EventCard.svelte';
 
-    export let events: SanityEvent[] = [];
+    interface Props {
+        events?: SanityEvent[];
+    }
 
-    const formatEventDate = (value?: string) => {
-        if (!value) return 'Datum folgt';
+    let { events = [] }: Props = $props();
 
-        const parsed = new Date(value);
-
-        if (Number.isNaN(parsed.getTime())) return 'Datum folgt';
-
-        return new Intl.DateTimeFormat('de-DE', {
-            weekday: 'long',
-            day: '2-digit',
-            month: 'long',
-            year: 'numeric'
-        }).format(parsed);
-    };
-
-    const formatEventTime = (value?: string) => {
-        if (!value) return null;
-
-        const parsed = new Date(value);
-        
-        if (Number.isNaN(parsed.getTime())) return null;
-
-        return new Intl.DateTimeFormat('de-DE', {
-            hour: '2-digit',
-            minute: '2-digit'
-        }).format(parsed);
-    };
-
-    $: sortedEvents = [...events].sort((a, b) => {
+    const sortedEvents = $derived([...events].sort((a, b) => {
         const aTime = a.date ? new Date(a.date).getTime() : Number.POSITIVE_INFINITY;
         const bTime = b.date ? new Date(b.date).getTime() : Number.POSITIVE_INFINITY;
         return aTime - bTime;
-    });
-
-    type DisplayEvent = SanityEvent & {
-        formattedDate: string;
-        formattedTime: string | null;
-    };
-
-    let displayEvents: DisplayEvent[] = [];
-
-    $: displayEvents = sortedEvents.map((event) => ({
-        ...event, // copy all original properties
-        formattedDate: formatEventDate(event.date),
-        formattedTime: formatEventTime(event.date)
     }));
 </script>
 
@@ -74,42 +34,10 @@
             </a>
         </div>
 
-        {#if displayEvents.length}
+        {#if sortedEvents.length}
             <div class="grid gap-6 sm:grid-cols-2 xl:grid-cols-2">
-                {#each displayEvents as event (event._id)}
-                    <article
-                        class="group rounded-xl border border-gray-200 bg-white/80 shadow-sm p-6 space-y-2 transition duration-200 ease-out hover:-translate-y-1 hover:border-red/40 hover:shadow-lg"
-                    >
-                        <header class="space-y-1 ">
-                            <p class="inline-flex items-center gap-2 text-xs lg:text-sm font-semibold uppercase tracking-wide text-red">
-                                <CalendarDays class="w-4 h-4 transition-colors duration-200 group-hover:text-red-500" />
-                                {event.formattedDate}
-                            </p>
-                            <h2 class="text-lg font-semibold text-gray-900">{event.title ?? 'Event'}</h2>
-                        </header>
-
-                        <div class="flex flex-col lg:flex-row items-start gap-2 mt-3 lg:gap-4 text-sm text-gray-600">
-                            {#if event.formattedTime}
-                                <div class="flex items-center gap-2 text-sm text-gray-600">
-                                    <Clock class="w-4 h-4 text-red transition-colors duration-200 group-hover:text-red-500" />
-                                    <span>{event.formattedTime} Uhr</span>
-                                </div>
-                            {/if}
-                            {#if event.ort}
-                                <div class="flex items-center gap-2 text-sm text-gray-600">
-                                    <MapPin class="w-4 h-4 text-red transition-colors duration-200 group-hover:text-red-500" />
-                                    <span>{event.ort}</span>
-                                </div>
-                            {/if}
-                        </div>
-
-                        {#if event.comment}
-                            <div class="flex items-center gap-2 text-sm text-gray-600">
-                                <MessageSquare class="w-4 h-4 text-red transition-colors duration-200 group-hover:text-red-500" />
-                                <span>{event.comment}</span>
-                            </div>
-                        {/if}
-                    </article>
+                {#each sortedEvents as event (event._id)}
+                    <EventCard {event} />
                 {/each}
             </div>
         {:else}
