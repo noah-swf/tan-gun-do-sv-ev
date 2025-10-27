@@ -16,7 +16,7 @@
 		<div class="flex flex-col md:flex-row md:items-center md:justify-between">
 			<div class="flex flex-col md:flex-row md:items-center space-x-4 space-y-4 md:space-y-0">
 				<img src={logo} alt="Logo Tan Gun Do" class="h-12 w-12" />
-				<p class="font-bold text-lg">&copy; {year} Tan Gun Do SV e.V.</p>
+				<h1 class="">&copy; {year} Tan Gun Do SV e.V.</h1>
 			</div>
 
 			<div class="flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0 mt-6 md:mt-0 md:items-center">
