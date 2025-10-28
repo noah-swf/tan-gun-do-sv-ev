@@ -11,7 +11,6 @@
         ageGroup: string;
         timeslot: string;
         location: string;
-        trainer: string;
     };
 
     type Trainingszeiten = {

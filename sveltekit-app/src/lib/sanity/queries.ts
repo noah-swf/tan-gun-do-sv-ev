@@ -30,8 +30,7 @@ export const trainingszeitenQuery = groq`
 	  units[]{
 	    ageGroup,
 	    timeslot,
-	    location,
-	    trainer
+	    location
 	}
   }`;
 
