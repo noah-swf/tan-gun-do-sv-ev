@@ -23,12 +23,12 @@
 
 
 
-<section class="min-w-screen inset-x-0 p-10 md:p-16 lg:p-10">
+<section class="min-w-screen inset-x-0 px-6 md:p-16 lg:p-10">
 	<div class="max-w-4xl mx-auto ">
-		<a href="../" class="inline-flex items-center opacity-50 text-sm md:py-2 mb-2 hover:opacity-100" >
+		<button onclick={() => history.back()} class="inline-flex items-center opacity-50 text-sm md:py-2 mb-1 hover:opacity-100 hover:cursor-pointer" >
 			<ChevronLeft class="inline h-4 w-4 mr-1" />
 			Zurück
-		</a>
+		</button>
 	{#if post.mainImage}
 		<div class="aspect-auto w-full md:my-4 my-2">
 			<img

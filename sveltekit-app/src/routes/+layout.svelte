@@ -5,6 +5,8 @@
 
 	import Navbar from '../components/Navbar.svelte';
 	import Footer from '../components/Footer.svelte';
+	import { onMount } from 'svelte';
+
 	interface Props {
 		children?: import('svelte').Snippet;
 	}
