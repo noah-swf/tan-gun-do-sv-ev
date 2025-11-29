@@ -35,7 +35,7 @@
   	<div class="flex justify-between items-center w-full">
     	<a class="flex items-center space-x-3" href="/">
     	  	<img src={logo} alt="Logo Tan Gun Do" width="50" height="50" />
-    	  	<h1 class="hidden lg:block">Tan Gun Do Selbstverteidigung e.V</h1>
+    	  	<h1 class="hidden font-medium lg:block">Tan Gun Do Selbstverteidigung e.V</h1>
 		</a>
 
 

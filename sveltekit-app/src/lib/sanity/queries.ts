@@ -49,6 +49,30 @@ export interface Trainingszeiten {
 	units: units[];
 }
 
+export const aboutUsQuery = groq`*[_type == "aboutUs"][0]{
+  title,
+  description,
+  trainers[]->{
+    name,
+    image,
+    roles,
+    taekwondoSeit,
+    graduierung
+  },
+  coTrainers[]->{
+    name,
+    image,
+    roles,
+    taekwondoSeit,
+    graduierung
+  },
+  certifications[]{
+    name,
+    logo,
+    link
+  }
+}`;
+
 export interface Post {
 	_type: 'newsPost';
 	_createdAt: string;
