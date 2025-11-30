@@ -20,6 +20,7 @@
 			{/if}
 		</section>
 
+		<!-- Trainers -->
 		{#if aboutUs.trainers && aboutUs.trainers.length > 0}
 			<section>
 				<h2 class="text-2xl font-semibold text-gray-800 mb-6">Unsere Trainer</h2>
@@ -55,10 +56,11 @@
 						</div>
 					{/each}
 				</div>
-				<img src={logo} alt="Tan Gun Do Logo" class="absolute -right-10 lg:left-2/5 top-[70vh] lg:top-[30vh] -z-1 lg:w-lg w-85 opacity-10" />
+				<img src={logo} alt="Tan Gun Do Logo" class="absolute lg:-right-10 lg:left-2/5 top-[70vh] lg:top-[30vh] -z-1 lg:w-lg w-85 opacity-10" />
 			</section>
 		{/if}
-
+		
+		<!-- Co-Trainers -->
 		{#if aboutUs.coTrainers && aboutUs.coTrainers.length > 0}
 			<section class="mt-16">
 				<h2 class="text-2xl font-semibold text-gray-800 mb-6">Unsere Co-Trainer</h2>
@@ -97,6 +99,7 @@
 			</section>
 		{/if}
 
+		<!-- Certifications -->
 		{#if aboutUs.certifications && aboutUs.certifications.length > 0}
 			<section class="mt-16">
 				<h2 class="text-2xl font-semibold text-gray-800 mb-6">Offiziell anerkannt & zertifiziert</h2>

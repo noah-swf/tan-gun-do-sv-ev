@@ -6,6 +6,8 @@
 	import logo from '$lib/assets/logo.webp';
 	import { afterNavigate } from '$app/navigation';
 
+	let scrollY = 0;
+
     let links = [
 		{ href: '/', name: 'Home' },
 		{ href: '/trainingszeiten', name: 'Trainingszeiten' },
@@ -31,7 +33,14 @@
 
 </script>
 
-<nav class="px-6 lg:px-8 py-6 bg-white z-50 relative">
+<svelte:window bind:scrollY />
+
+<nav 
+	class="px-6 lg:px-8 bg-white transition-all duration-300"
+	class:py-6={scrollY === 0}
+	class:py-4={scrollY > 0}
+	class:shadow-md={scrollY > 0}
+>
   	<div class="flex justify-between items-center w-full">
     	<a class="flex items-center space-x-3" href="/">
     	  	<img src={logo} alt="Logo Tan Gun Do" width="50" height="50" />
