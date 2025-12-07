@@ -2,8 +2,7 @@
     import logo from '$lib/assets/logo.webp';
     const links = [
         { href: '/datenschutz', name: 'Datenschutz' },
-        { href: '/impressum', name: 'Impressum' },
-        { href: '/kontakt', name: 'Kontakt' }
+        { href: '/impressum', name: 'Impressum' }
     ]
 
 	let year = $state(new Date().getFullYear().toString());
