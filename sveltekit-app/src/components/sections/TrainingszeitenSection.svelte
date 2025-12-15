@@ -20,14 +20,19 @@
     };
 
     let trainingszeiten: Trainingszeiten[] = [];
+    let loading = true;
 
     onMount(async() => {
-        trainingszeiten = await client.fetch<Trainingszeiten[]>(trainingszeitenQuery);
+        try {
+            trainingszeiten = await client.fetch<Trainingszeiten[]>(trainingszeitenQuery);
 
-        const dayOrder = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
-        trainingszeiten.sort(
-            (a, b) => dayOrder.indexOf(a.day) - dayOrder.indexOf(b.day)
-        );
+            const dayOrder = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
+            trainingszeiten.sort(
+                (a, b) => dayOrder.indexOf(a.day) - dayOrder.indexOf(b.day)
+            );
+        } finally {
+            loading = false;
+        }
     });
 </script>
 
@@ -44,7 +49,7 @@
         <h1 class="text-2xl font-semibold text-gray-800 mb-10">Unsere Trainingszeiten</h1>
     </div>
 
-    <div class="relative flex md:items-center text-left md:text-center bg-yellow-100 border-2 border-yellow-200 rounded-lg p-4 mb-10">
+    <div class="relative flex md:items-center text-left md:text-center bg-yellow-50 border-2 border-yellow-100 rounded-lg p-4 mb-10">
         <Clock color="var(--color-yellow-600)" class="w-5 h-5 text-yellow-600 left-4" />
         <span class="text-yellow-600 text-left md:text-center w-full ml-3">
             <strong>Hinweis:</strong> Sollten Trainingszeiten abweichen, informieren wir euch immer rechtzeitig über WhatsApp.
@@ -59,34 +64,60 @@
     </div>
 
 
-    {#each trainingszeiten as day}
-        <section class="mb-10">
-            <h2 class="text-xl font-semibold mb-6 capitalize">{day.day}</h2>
-            
-
-            <div class="flex flex-wrap gap-8 justify-start">
-
-                {#each day.units as unit}
-                    <div class="border border-gray-300 rounded-xl p-4 w-100 space-y-2">
-                        <p class="font-bold text-base">{unit.ageGroup}</p>
-                        <hr class="border-t-1.5 border-gray-300 mb-4 mt-2">
-                        <div class="flex items-center">
-                            <Clock color="var(--color-red)" class="w-4 h-4 mr-2"/>
-                            <p class="text-gray-700 text-sm">{unit.timeslot}</p>
-                        </div>
-                        <div class="flex items-center">
-                            <Pin color="var(--color-red)" class="w-4 h-4 mr-2"/>
-                            <p class="text-gray-700 text-sm">{unit.location}</p>
-                        </div>
-                        {#if unit.comment }
-                            <div class="flex items-center">
-                                <MessageSquare  color="var(--color-red)" class="w-4 h-4 mr-2"/>
-                                <p class="text-sm text-gray-700 ">"{unit.comment}"</p>
+    {#if loading}
+        <div class="animate-pulse space-y-10">
+             {#each Array(3) as _}
+                <section class="mb-10">
+                    <div class="h-7 bg-gray-200 rounded w-32 mb-6"></div>
+                    <div class="flex flex-wrap gap-8 justify-start">
+                        {#each Array(2) as _}
+                            <div class="border border-gray-200 rounded-xl p-4 w-80 space-y-2">
+                                <div class="h-6 bg-gray-200 rounded w-3/4"></div>
+                                <hr class="border-t-1.5 border-gray-200 mb-4 mt-2">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-4 h-4 bg-gray-200 rounded-full"></div>
+                                    <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-4 h-4 bg-gray-200 rounded-full"></div>
+                                    <div class="h-4 bg-gray-200 rounded w-2/3"></div>
+                                </div>
                             </div>
-                        {/if}
+                        {/each}
                     </div>
-                {/each}
-            </div>
-        </section>
-    {/each}
+                </section>
+            {/each}
+        </div>
+    {:else}
+        {#each trainingszeiten as day}
+            <section class="mb-10">
+                <h2 class="text-xl font-semibold mb-6 capitalize">{day.day}</h2>
+                
+
+                <div class="flex flex-wrap gap-8 justify-start">
+
+                    {#each day.units as unit}
+                        <div class="border border-gray-300 rounded-xl p-4 w-100 space-y-2">
+                            <p class="font-bold text-base">{unit.ageGroup}</p>
+                            <hr class="border-t-1.5 border-gray-300 mb-4 mt-2">
+                            <div class="flex items-center">
+                                <Clock color="var(--color-red)" class="w-4 h-4 mr-2"/>
+                                <p class="text-gray-700 text-sm">{unit.timeslot}</p>
+                            </div>
+                            <div class="flex items-center">
+                                <Pin color="var(--color-red)" class="w-4 h-4 mr-2"/>
+                                <p class="text-gray-700 text-sm">{unit.location}</p>
+                            </div>
+                            {#if unit.comment }
+                                <div class="flex items-center">
+                                    <MessageSquare  color="var(--color-red)" class="w-4 h-4 mr-2"/>
+                                    <p class="text-sm text-gray-700 ">"{unit.comment}"</p>
+                                </div>
+                            {/if}
+                        </div>
+                    {/each}
+                </div>
+            </section>
+        {/each}
+    {/if}
 </section>

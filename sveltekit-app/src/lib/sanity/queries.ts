@@ -110,3 +110,18 @@ export interface Event {
 	ort?: string;
 	comment?: string;
 }
+
+export const impressumQuery = groq`*[_type == "impressum"][0]`;
+export const datenschutzQuery = groq`*[_type == "datenschutz"][0]`;
+
+export interface Impressum {
+    _id: string;
+    title: string;
+    content: PortableTextBlock[];
+}
+
+export interface Datenschutz {
+    _id: string;
+    title: string;
+    content: PortableTextBlock[];
+}
