@@ -29,6 +29,15 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'gallery',
+      title: 'Bildergalerie',
+      type: 'array',
+      of: [{type: 'image'}],
+      options: {
+        layout: 'grid',
+      },
+    }),
+    defineField({
       name: 'body',
       title: 'Artikel',
       type: 'blockContent',
