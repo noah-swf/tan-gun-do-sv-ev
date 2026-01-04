@@ -36,10 +36,23 @@ export const trainingszeitenQuery = groq`
 	}
   }`;
 
+export const FAQQuery = groq`
+	*[_type == "faq"] | order(_createdAt asc) {
+	  _id,
+	  question,
+	  answer
+	}`;
+
 export interface units{
 	ageGroup: string;
 	timeslot: string;
 	location?: string;
+}
+
+export interface FAQ {
+	_id: string;
+	question: string;
+	answer: string;
 }
 
 export interface Trainingszeiten {

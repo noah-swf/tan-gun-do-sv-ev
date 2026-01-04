@@ -11,6 +11,7 @@
     let error = false;
     let privacyAccepted = false;
 
+
     async function handleSubmit(e: Event) {
         e.preventDefault();
         try {
