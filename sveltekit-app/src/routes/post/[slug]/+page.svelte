@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { PortableText } from '@portabletext/svelte';
 	import { useQuery } from '@sanity/svelte-loader';
-	import { formatDate } from '$lib/utils';
+	import { formatDate, toPlainText, truncateText } from '$lib/utils';
 	import { urlFor } from '$lib/sanity/image';
 	import type { PageData } from './$types';
 	import ChevronLeft from '@lucide/svelte/icons/chevron-left';
@@ -12,6 +12,7 @@
 	import SanityBullet from '../../../components/ui/SanityBullet.svelte';
 	import SanityLink from '../../../components/ui/SanityLink.svelte';
 	import SanityQuote from '../../../components/ui/SanityQuote.svelte';
+	import SEO from '../../../components/SEO.svelte';
 
 	interface Props {
 		data: PageData;
@@ -87,6 +88,15 @@
 		}
 	}
 </script>
+
+<SEO
+	title={post.title}
+	description={truncateText(toPlainText(post.body), 160)}
+	image={post.mainImage ? urlFor(post.mainImage).width(1200).height(630).url() : undefined}
+	type="article"
+	publishedAt={post._createdAt}
+	modifiedAt={post._createdAt}
+/>
 
 <svelte:window onkeydown={handleKeydown} />
 

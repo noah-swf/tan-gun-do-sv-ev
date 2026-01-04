@@ -39,8 +39,8 @@
 <section class="px-6 md:p-0 mt-10 max-w-6xl mx-auto">
     <div class="hidden md:flex justify-between items-center mb-10">
       <h1 class="text-2xl font-semibold">Unsere Trainingszeiten</h1>
-      <a href="/kontakt" class="group inline-flex items-center gap-1 text-sm opacity-50 duration-200 text-black hover:opacity-100">
-        <span>Probetraining vereinbaren</span>
+      <a href="/probetraining" class="group inline-flex items-center gap-1 text-sm opacity-50 duration-200 text-black hover:opacity-100">
+        <span>Probetraining</span>
         <span class="inline-block transition-transform duration-200 motion-safe:group-hover:translate-x-1" aria-hidden="true">→</span>
       </a>
     </div>

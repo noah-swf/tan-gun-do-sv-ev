@@ -2,13 +2,15 @@
 	import { PortableText } from '@portabletext/svelte';
 	import { urlFor } from '$lib/sanity/image';
 	import type { PageData } from './$types';
-    import logo from '$lib/assets/logo.webp';
 	import TrainerSection from '../../components/sections/TrainerSection.svelte';
+	import SEO from '../../components/SEO.svelte';
 
 	export let data: PageData;
 	
 	$: aboutUs = data.aboutUs;
 </script>
+
+<SEO title="Über Uns" description="Erfahren Sie mehr über die Geschichte und die Trainer des Tan-Gun-Do Kampfsportvereins." />
 
 <div class="container mx-auto px-6 lg:px-4 py-8 max-w-6xl">
 	{#if aboutUs}

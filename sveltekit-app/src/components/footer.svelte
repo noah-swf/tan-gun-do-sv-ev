@@ -7,7 +7,7 @@
 
 	let year = $state(new Date().getFullYear().toString());
 </script>
-<div class="mt-10 min-w-screen inset-x-0 px-6 md:p-16 lg:p-10">
+<div class="mt-10 mx-auto px-6 lg:px-0 py-8 max-w-6xl">
 	<hr class="border-t-1.5 border-gray-300 mb-10 md:mb-0 "/>
 	<footer class="w-full mx-auto my-4">
 		<nav class="py-4 w-full">

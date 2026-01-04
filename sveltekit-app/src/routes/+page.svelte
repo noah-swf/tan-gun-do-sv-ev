@@ -5,6 +5,7 @@
 	import HeroSection from '../components/sections/HeroSection.svelte';
 	import EventSection from '../components/sections/EventSection.svelte';
 	import MapSection from '../components/sections/MapSection.svelte';
+	import SEO from '../components/SEO.svelte';
 	
 	import type { PageData } from './$types';
 	import type {
@@ -29,9 +30,7 @@
 
 </script>
 
-<svelte:head>
-	<title>Home | Tan-Gun-Do</title>
-</svelte:head>
+<SEO />
 
 <section>
 	<HeroSection {hero} />

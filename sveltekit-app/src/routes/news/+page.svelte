@@ -4,6 +4,7 @@
     import NewsCard from '$lib/../components/ui/NewsCard.svelte';
     import PaginationControls from '../../components/ui/PaginationControls.svelte';
     import type { PageData } from './$types';
+    import SEO from '../../components/SEO.svelte';
 
     const POSTS_PER_PAGE = 6;
 
@@ -46,6 +47,8 @@
         }
     }
 </script>
+
+<SEO title="Aktuelles & News" description="Neuigkeiten und Berichte vom Tan-Gun-Do SV. e.V." />
 
 <div class="container mx-auto px-6 lg:px-4 py-8 max-w-6xl">
     <h1 class="text-2xl font-semibold text-gray-800 mb-2">Aktuelles</h1>

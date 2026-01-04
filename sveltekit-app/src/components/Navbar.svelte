@@ -9,6 +9,7 @@
 	let scrollY = 0;
 
     let links = [
+		{ href: '/', name: 'Home' },
 		{ href: '/trainingszeiten', name: 'Trainingszeiten' },
 		{ href: '/news', name: 'News' },
 		{ href: '/termine', name: 'Termine' },

@@ -6,11 +6,14 @@
 	import SanityBullet from '../../components/ui/SanityBullet.svelte';
 	import SanityLink from '../../components/ui/SanityLink.svelte';
 	import SanityQuote from '../../components/ui/SanityQuote.svelte';
+	import SEO from '../../components/SEO.svelte';
 
 
 	export let data: PageData;
     $: impressum = data.impressum;
 </script>
+
+<SEO title="Impressum" description="Impressum des Tan-Gun-Do Kampfsportvereins." />
 
 <div class="container mx-auto px-6 lg:px-4 py-8 max-w-6xl">
     {#if impressum}

@@ -8,10 +8,13 @@
 	import Shirt from '@lucide/svelte/icons/shirt';
 	import GlassWater from '@lucide/svelte/icons/glass-water';
 	import SanityLink from '../../components/ui/SanityLink.svelte';
+	import SEO from '../../components/SEO.svelte';
 
 	export let data: PageData;
 	$: probetraining = data.probetraining;
 </script>
+
+<SEO title="Probetraining" description="Kostenloses Probetraining beim Tan-Gun-Do Kampfsportverein. Jetzt anmelden!" />
 
 {#if probetraining}
 	<div class="container mx-auto px-6 lg:px-4 pt-8 max-w-6xl">
