@@ -35,6 +35,7 @@ export default defineType({
                         { name: 'ageGroup', title: 'Altersgruppe', type: 'string', description: 'Kids, Jugendliche, Erwachsene' },
                         { name: 'timeslot', title: 'Uhrzeit', type: 'string', description: 'z.B. 18:00 - 19:00 Uhr' },
                         { name: 'location', title: 'Ort', type: 'string', description: 'Große Halle, Kleine Halle' },
+                        { name: 'comment', title: 'Anmerkung', type: 'string', description: 'z.B. Schutzausrüstung mitbringen' }
                     ]
                 }
             ]

@@ -1,13 +1,33 @@
+<script lang="ts">
+  let showMap = false;
+</script>
+
 <hr class="border-t-1.5 border-gray-200 mt-20 md:mb-0 max-w-6xl mx-6 md:mx-auto"/>
-<section class="flex flex-col md:flex-row justify-center gap-10 my-20 md:my-30 max-w-6xl mx-auto px-6 md:px-0">
+<section class="flex flex-col md:flex-row justify-center gap-10 my-20 md:my-20 max-w-6xl mx-auto px-6 md:px-0">
   <div class="flex flex-col">
     <h1 class="text-2xl font-semibold text-gray-800 mb-4">Unser Dojang</h1>
-    <iframe
-      class="border border-gray-300 rounded-xl w-full lg:w-[800px] h-[300px] lg:h-[600px] mt-6"
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d738.6622875908462!2d7.0620507791095335!3d51.48470262352688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b8e791702e62c3%3A0xf8c8ffd3cc55eb8a!2sSaatbruchstra%C3%9Fe%2052%2C%2045309%20Essen!5e0!3m2!1sde!2sde!4v1759249327999!5m2!1sde!2sde" 
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-      title="Karte und Anfahrt"></iframe>
+    {#if showMap}
+      <iframe
+        class="border border-gray-300 rounded-xl w-full lg:w-[800px] h-[300px] lg:h-[600px] mt-6"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d738.6622875908462!2d7.0620507791095335!3d51.48470262352688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b8e791702e62c3%3A0xf8c8ffd3cc55eb8a!2sSaatbruchstra%C3%9Fe%2052%2C%2045309%20Essen!5e0!3m2!1sde!2sde!4v1759249327999!5m2!1sde!2sde" 
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Karte und Anfahrt"></iframe>
+    {:else}
+      <div class="border border-gray-300 rounded-xl w-full lg:w-[800px] h-[300px] lg:h-[600px] mt-6 flex flex-col items-center justify-center bg-gray-50 p-6 text-center">
+        <p class="text-gray-600 mb-4 max-w-md">
+          Klicken Sie auf den Button, um die Google Maps Karte zu laden.
+          Dabei werden personenbezogene Daten an Google übermittelt.
+          Weitere Informationen finden Sie in unserer <a href="/datenschutz" class="text-red hover:underline">Datenschutzerklärung</a>.
+        </p>
+        <button 
+          on:click={() => showMap = true}
+          class="bg-red text-white px-6 py-2 rounded hover:opacity-90 transition-opacity font-semibold"
+        >
+          Karte laden
+        </button>
+      </div>
+    {/if}
   </div>
 
   <div class="flex flex-col text-center justify-center items-center md:text-left lg:h-[600px] lg:self-end">

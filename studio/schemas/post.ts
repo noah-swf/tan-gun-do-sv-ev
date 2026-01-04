@@ -2,7 +2,7 @@ import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'newsPost',
-  title: 'News Posts',
+  title: 'Beiträge',
   type: 'document',
   fields: [
     defineField({
@@ -26,6 +26,15 @@ export default defineType({
       type: 'image',
       options: {
         hotspot: true,
+      },
+    }),
+    defineField({
+      name: 'gallery',
+      title: 'Bildergalerie',
+      type: 'array',
+      of: [{type: 'image'}],
+      options: {
+        layout: 'grid',
       },
     }),
     defineField({

@@ -33,8 +33,15 @@
     const TRANSITION_DURATION_MS = 300;
     let positionIndex = $state(0);
     let enableTransition = $state(false);
+    let loading = $state(true);
     const DEFAULT_DURATION_MS = 5000;
     let timer: ReturnType<typeof setTimeout> | null = null;
+
+    $effect(() => {
+        if (filteredSlides.length === 0) {
+            loading = false;
+        }
+    });
 
     function clearAutoplay() {
         if (timer) {
@@ -85,6 +92,26 @@
     };
 
     let displayedSlides = $state<DisplaySlide[]>([]);
+
+    function handleImageLoad(node: HTMLImageElement, index: number) {
+        if (!loading) return;
+
+        const check = () => {
+            if (index === positionIndex) loading = false;
+        };
+
+        if (node.complete) {
+            check();
+        }
+
+        node.addEventListener('load', check);
+
+        return {
+            destroy() {
+                node.removeEventListener('load', check);
+            }
+        };
+    }
 
     function getActiveIndex() {
         if (!filteredSlides.length) return 0;
@@ -187,9 +214,9 @@
 </script>
 
 <div class="flex flex-col lg:flex-row min-w-screen">
-    <div class="w-full lg:w-1/2 lg:h-[87.5vh] flex flex-col justify-center items-start mt-14 lg:mt-0 space-y-6 order-2 lg:order-1 p-7 lg:p-0">
+    <div class="w-full lg:w-1/2 lg:h-[87.5vh] flex flex-col justify-center items-start mt-12 lg:mt-0 space-y-6 order-2 lg:order-1 p-7 lg:p-0">
         <div class="mx-auto w-full lg:w-3/5 space-y-5">
-            <h1 class="text-3xl font-semibold">
+            <h1 class="lg:text-3xl text-2xl font-semibold">
                 {#each titleLines as line, index}
                     <span>{line}</span>
                     {#if index < titleLines.length - 1}
@@ -200,13 +227,16 @@
             <p class="opacity-50">{computedSubtitle}</p>
             <div class="flex flex-col lg:flex-row space-x-3 space-y-3 mt-7 lg:mt-0 lg:space-y-0">
                 <ButtonFilled href="/probetraining">Jetzt mitmachen</ButtonFilled>
-                <ButtonOutlined href="/trainingszeiten">Trainingszeiten ansehen</ButtonOutlined>
+                <ButtonOutlined href="/news">Aktuelles aus dem Verein</ButtonOutlined>
             </div>
         </div>
         <img src={logo} alt="Tan Gun Do Logo" class="absolute left-0 lg:left-1/4 top-[52vh] lg:top-[5vh] -z-1 lg:w-xl w-40 opacity-10" />
     </div>
     <div class="w-full lg:w-1/2 h-[40vh] lg:h-[87.5vh] flex flex-col lg:justify-center items-start lg:space-y-6 lg:relative lg:right-0 order-1 lg:order-2">
         <div class="relative w-full h-full lg:h-10/12 overflow-hidden lg:rounded-l-lg shadow-lg">
+            {#if loading}
+                <div class="absolute inset-0 z-20 bg-gray-200 animate-pulse w-full h-full"></div>
+            {/if}
             {#if filteredSlides.length > 0}
                 {@const activeIndex = getActiveIndex()}
                 <div
@@ -225,6 +255,7 @@
                                         ? 'eager'
                                         : 'lazy'
                                     : 'eager'}
+                                use:handleImageLoad={index}
                             />
                         </figure>
                     {/each}

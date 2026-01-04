@@ -5,7 +5,6 @@
 
 	import Navbar from '../components/Navbar.svelte';
 	import Footer from '../components/Footer.svelte';
-	import { onMount } from 'svelte';
 
 	interface Props {
 		children?: import('svelte').Snippet;
@@ -16,9 +15,11 @@
 
 <div class="min-h-dvh flex flex-col font-poppins">
 
-  <header class="header">
+  <header class="header fixed top-0 z-50 w-full">
 		<Navbar/>
 	</header>
+
+	<div class="h-24"></div>
 
 	<main class="flex-grow">
 		{@render children?.()}

@@ -2,7 +2,16 @@ import type { PortableTextBlock } from '@portabletext/types';
 import type { Image, ImageAsset, Slug } from '@sanity/types';
 import groq from 'groq';
 
-export const postQuery = groq`*[_type == "newsPost" && slug.current == $slug][0]`;
+export const postQuery = groq`*[_type == "newsPost" && slug.current == $slug][0]{
+	...,
+	gallery[]{
+		...,
+		asset->{
+			...,
+			metadata
+		}
+	}
+}`;
 
 export const postsQuery = groq`*[_type == "newsPost" && defined(slug.current)] | order(_createdAt desc)[0...9]`; // Fetch the 9 most recent posts
 
@@ -32,7 +41,8 @@ export const trainingszeitenQuery = groq`
 	  units[]{
 	    ageGroup,
 	    timeslot,
-	    location
+	    location,
+	    comment
 	}
   }`;
 
@@ -61,6 +71,30 @@ export interface Trainingszeiten {
 	units: units[];
 }
 
+export const aboutUsQuery = groq`*[_type == "aboutUs"][0]{
+  title,
+  description,
+  trainers[]->{
+    name,
+    image,
+    roles,
+    taekwondoSeit,
+    graduierung
+  },
+  coTrainers[]->{
+    name,
+    image,
+    roles,
+    taekwondoSeit,
+    graduierung
+  },
+  certifications[]{
+    name,
+    logo,
+    link
+  }
+}`;
+
 export interface Post {
 	_type: 'newsPost';
 	_createdAt: string;
@@ -68,6 +102,17 @@ export interface Post {
 	slug: Slug;
 	excerpt?: string;
 	mainImage?: ImageAsset;
+	gallery?: {
+		asset: {
+			metadata: {
+				dimensions: {
+					aspectRatio: number;
+					width: number;
+					height: number;
+				};
+			};
+		};
+	}[];
 	body: PortableTextBlock[];
 }
 
@@ -97,4 +142,19 @@ export interface Event {
 	date?: string;
 	ort?: string;
 	comment?: string;
+}
+
+export const impressumQuery = groq`*[_type == "impressum"][0]`;
+export const datenschutzQuery = groq`*[_type == "datenschutz"][0]`;
+
+export interface Impressum {
+    _id: string;
+    title: string;
+    content: PortableTextBlock[];
+}
+
+export interface Datenschutz {
+    _id: string;
+    title: string;
+    content: PortableTextBlock[];
 }

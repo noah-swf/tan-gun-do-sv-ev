@@ -12,6 +12,6 @@
 </script>
 
 <!-- Simple bullet point for lists -->
-<ul class="list-disc list-inside my-2">
+<ul class="list-disc list-inside my-2 space-y-1.5">
   {@render children()}
 </ul>

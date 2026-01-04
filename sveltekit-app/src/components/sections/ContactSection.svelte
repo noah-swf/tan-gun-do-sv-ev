@@ -39,16 +39,22 @@
     }
 </script>
 
-<section class="mx-10 md:mx-20 px-6 py-12 space-y-6">
-    <h1 class="text-2xl font-bold mb-6">Kontakt</h1>
-    <p class="font-thin text-gray-700">Hier kannst du uns eine Nachricht mit deinem Anliegen schicken. Komm gerne auch persönlich zu den 
-        <a href="/trainingszeiten" class="text-red-600 hover:text-red-800 font-semibold duration-200">
+<section class="container mx-auto px-6 lg:px-4 py-8 max-w-6xl">
+    <h1 class="text-2xl font-semibold text-gray-800 mb-2">Aktuelles</h1>
+    <p class="mb-10">
+        <span class="opacity-50">       
+            Hier kannst du uns eine Nachricht mit deinem Anliegen schicken. Komm gerne auch persönlich zu den 
+        </span>
+        <a href="/trainingszeiten" class="text-red-600 hover:text-red-800 font-semibold duration-200 opacity-100">
             Trainingszeiten
-        </a> vorbei, die Adresse findest du weiter unten.
+        </a> 
+        <span class="opacity-50">       
+            vorbei. Die Adresse findest du weiter unten.
+        </span>
     </p>
     <div class="flex flex-col md:flex-row md:gap-6">
         <div class="block md:flex-1 w-full md:w-1/2 border border-gray-300 rounded-lg p-6">
-            <h2 class="text-xl font-semibold mb-6">Kontaktformular</h2>
+            <h2 class="text-lg font-semibold mb-6">Kontaktformular</h2>
             {#if success}
                 <div 
                 transition:slide={{duration:400}}
@@ -64,33 +70,33 @@
                     <Warning class="text-red-800 mx-2"/>Beim Senden der Nachricht ist ein Fehler aufgetreten. Bitte versuche es später erneut.
                 </div>
             {/if}
-            <form on:submit={handleSubmit} class="space-y-4">
+            <form on:submit={handleSubmit} class="space-y-4 text-sm">
             
                 <div>
-                    <label for="name" class="block mb-1 font-medium text-gray-700">Name</label>
+                    <label for="name" class="block mb-2 font-medium text-gray-700">Name</label>
                     <input id="name" type="text" bind:value={name} required
-                        class="w-full p-2 border border-gray-300 rounded-lg bg-gray-100" placeholder="Dein vollständiger Name"/>
+                        class="w-full p-2 px-4 border border-gray-300 rounded-lg bg-gray-100" placeholder="Dein vollständiger Name"/>
                 </div>
               
                 <div>
-                    <label for="email" class="block mb-1 font-medium text-gray-700">E-Mail</label>
+                    <label for="email" class="block mb-2 font-medium text-gray-700">E-Mail</label>
                     <input id="email" type="email" bind:value={email} required
-                        class="w-full p-2 border border-gray-300 rounded-lg bg-gray-100" placeholder="name@beispiel.de"/>
+                        class="w-full p-2 px-4 border border-gray-300 rounded-lg bg-gray-100" placeholder="name@beispiel.de"/>
                 </div>
               
                 <div>
-                    <label for="subject" class="block mb-1 font-medium text-gray-700">Betreff</label>
+                    <label for="subject" class="block mb-2 font-medium text-gray-700">Betreff</label>
                     <input id="subject" type="text" bind:value={subject} required
-                        class="w-full p-2 border border-gray-300 rounded-lg bg-gray-100" placeholder="Worum geht es?"/>
+                        class="w-full p-2 px-4 border border-gray-300 rounded-lg bg-gray-100" placeholder="Worum geht es?"/>
                 </div>
               
                 <div>
-                    <label for="message" class="block mb-1 font-medium text-gray-700">Nachricht</label>
+                    <label for="message" class="block mb-2 font-medium text-gray-700">Nachricht</label>
                     <textarea id="message" bind:value={message} rows="5" required
-                        class="w-full p-2 border border-gray-300 rounded-lg bg-gray-100" placeholder="Formuliere deine Nachricht"></textarea>
+                        class="w-full p-2 px-4 border border-gray-300 rounded-lg bg-gray-100" placeholder="Formuliere deine Nachricht"></textarea>
                 </div>
 
-                <div class="flex items-start space-x-2">
+                <div class="flex items-start space-x-2 py-2">
                     <input
                         id="privacy"
                         type="checkbox"
