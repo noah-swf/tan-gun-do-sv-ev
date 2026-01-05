@@ -8,5 +8,6 @@ import aboutUs from './aboutUs'
 import impressum from './impressum'
 import datenschutz from './datenschutz'
 import probetraining from './probetraining'
+import contact from './contact'
 
-export const schemaTypes = [heroSection, post, trainingszeiten, probetraining, events, aboutUs, trainer, datenschutz, impressum, blockContent]
+export const schemaTypes = [heroSection, post, trainingszeiten, probetraining, events, aboutUs, trainer, contact, datenschutz, impressum, blockContent]

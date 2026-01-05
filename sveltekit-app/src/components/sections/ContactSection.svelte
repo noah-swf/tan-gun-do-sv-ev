@@ -3,6 +3,10 @@
     import Check from '@lucide/svelte/icons/circle-check';
     import Warning from '@lucide/svelte/icons/circle-alert';
     import { slide } from 'svelte/transition';
+    import { urlFor } from '../../lib/sanity/image';
+
+    export let contact: any = null;
+
     let name = '';
     let email = '';
     let subject = '';
@@ -49,7 +53,7 @@
             Trainingszeiten
         </a> 
         <span class="opacity-50">       
-            vorbei. Die Adresse findest du weiter unten.
+            vorbei. Die Adresse unserer Halle findest du weiter unten.
         </span>
     </p>
     <div class="flex flex-col md:flex-row md:gap-6">
@@ -121,8 +125,12 @@
               </button>
             </form>
         </div>
-        <div class="hidden md:flex md:flex-1 border border-gray-300 rounded-lg">
-            <img src={Picture} alt="Meme" class="w-full h-full object-cover rounded-lg shadow-lg"/>
+        <div class="hidden md:flex md:flex-1 max-h-1/3 border border-gray-300 rounded-lg">
+            {#if contact?.image}
+                <img src={urlFor(contact.image).url()} alt="Contact" class="w-full h-full object-cover rounded-lg shadow-lg"/>
+            {:else}
+                <img src={Picture} alt="Meme" class="w-full h-full object-cover rounded-lg shadow-lg"/>
+            {/if}
         </div>
     </div>
 </section>

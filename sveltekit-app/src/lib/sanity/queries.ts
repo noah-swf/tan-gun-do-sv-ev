@@ -158,3 +158,5 @@ export interface Datenschutz {
     title: string;
     content: PortableTextBlock[];
 }
+
+export const contactQuery = groq`*[_type == "contact"][0]`;
