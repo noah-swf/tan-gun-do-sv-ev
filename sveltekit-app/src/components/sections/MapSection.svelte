@@ -1,5 +1,20 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
+  import ButtonFilled from '../ui/ButtonFilled.svelte';
+
   let showMap = false;
+
+  onMount(() => {
+    const stored = sessionStorage.getItem('map-consent');
+    if (stored === 'true') {
+      showMap = true;
+    }
+  });
+
+  function enableMap() {
+    showMap = true;
+    sessionStorage.setItem('map-consent', 'true');
+  }
 </script>
 
 <hr class="border-t-1.5 border-gray-200 mt-20 md:mb-0 max-w-6xl mx-6 md:mx-auto"/>
@@ -20,12 +35,11 @@
           Dabei werden personenbezogene Daten an Google übermittelt.
           Weitere Informationen finden Sie in unserer <a href="/datenschutz" class="text-red hover:underline">Datenschutzerklärung</a>.
         </p>
-        <button 
-          on:click={() => showMap = true}
-          class="bg-red text-white px-6 py-2 rounded hover:opacity-90 transition-opacity font-semibold"
-        >
-          Karte laden
-        </button>
+        <div class="w-50">
+           <ButtonFilled onclick={enableMap}>
+              Karte laden
+            </ButtonFilled>
+        </div>
       </div>
     {/if}
   </div>
