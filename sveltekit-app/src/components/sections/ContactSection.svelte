@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Picture from "../../lib/assets/testPic.png";
+    import Logo from "../../lib/assets/logo.webp";
     import Check from '@lucide/svelte/icons/circle-check';
     import Warning from '@lucide/svelte/icons/circle-alert';
     import { slide } from 'svelte/transition';
@@ -129,7 +129,7 @@
             {#if contact?.image}
                 <img src={urlFor(contact.image).url()} alt="Contact" class="w-full h-full object-cover rounded-lg shadow-lg"/>
             {:else}
-                <img src={Picture} alt="Meme" class="w-full h-full object-cover rounded-lg shadow-lg"/>
+                <img src={Logo} alt="logo" class="w-full h-full object-cover rounded-lg shadow-lg"/>
             {/if}
         </div>
     </div>

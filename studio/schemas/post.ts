@@ -22,11 +22,16 @@ export default defineType({
     }),
     defineField({
       name: 'mainImage',
-      title: 'Bild',
+      title: 'Titelbild',
       type: 'image',
       options: {
         hotspot: true,
       },
+    }),
+    defineField({
+      name: 'body',
+      title: 'Artikel',
+      type: 'blockContent',
     }),
     defineField({
       name: 'gallery',
@@ -36,11 +41,6 @@ export default defineType({
       options: {
         layout: 'grid',
       },
-    }),
-    defineField({
-      name: 'body',
-      title: 'Artikel',
-      type: 'blockContent',
     }),
   ],
   preview: {

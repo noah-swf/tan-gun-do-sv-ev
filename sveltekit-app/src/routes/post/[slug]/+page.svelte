@@ -118,10 +118,10 @@
 		<div class=""></div>
 	{/if}
 		<div class="">
-			<h1 class="text-3xl font-semibold md:mt-5 mt-7">{post.title}</h1>
+			<h1 class="text-3xl font-semibold md:mt-10 mt-7 my-4 text-gray-800">{post.title}</h1>
 			
 			{#if post.body}
-				<div class="mt-5 prose prose-sm md:prose lg:prose-lg max-w-none">
+				<div class="mt-5 prose prose-sm md:prose lg:prose-lg max-w-none text-gray-700">
 					<PortableText
 						value={post.body}
 						onMissingComponent={false}
@@ -150,7 +150,7 @@
 
 			{#if post.gallery && post.gallery.length > 0}
 				<div class="mt-12 mb-8">
-					<h2 class="text-2xl font-semibold mb-6">Galerie</h2>
+					<h2 class="text-2xl font-semibold mb-6 text-gray-800">Galerie</h2>
 					<div class="gallery-container flex flex-wrap gap-2">
 						{#each post.gallery as image, i}
 							{@const aspectRatio = image.asset?.metadata?.dimensions?.aspectRatio || 1}

@@ -15,7 +15,7 @@ export const postQuery = groq`*[_type == "newsPost" && slug.current == $slug][0]
 
 export const postsQuery = groq`*[_type == "newsPost" && defined(slug.current)] | order(_createdAt desc)[0...9]`; // Fetch the 9 most recent posts
 
-export const eventsQuery = groq`*[_type == "event"] | order(date asc)[0...2]`;
+export const eventsQuery = groq`*[_type == "event" && date >= now()] | order(date asc)[0...2]`;
 
 export const homePageQuery = groq`{
 	"hero": *[_type == "heroSection"] | order(_createdAt desc)[0] {
