@@ -117,5 +117,24 @@
   </div>
 </div>
 {:else}
-    <Welcome />
+<div class="min-w-screen px-6 mt-20 md:mt-30 md:px-10 py-20 relative inset-x-0 bg-[#E6EDF6]/50">
+  <!-- Hintergrundbilder -->
+  <img src={sktl} alt="" class="hidden md:block absolute top-5 left-5 w-20 lg:opacity-25 md:opacity-10" />
+  <img src={sktr} alt="" class="hidden md:block absolute top-5 right-5 w-20 lg:opacity-25 md:opacity-10" />
+  <img src={skbl} alt="" class="hidden md:block absolute bottom-5 left-5 w-20 lg:opacity-25 md:opacity-10" />
+  <img src={skbr} alt="" class="hidden md:block absolute bottom-5 right-5 w-20 lg:opacity-25 md:opacity-10" />
+
+  <div class="relative max-w-6xl mx-auto">
+
+    <!-- Desktop: Horizontal Scroller -->
+      {#if posts.length === 0}
+        <div class="flex flex-col items-center justify-center py-12 text-center text-gray-500">
+          <p class="text-base">Aktuell sind keine Neuigkeiten verfügbar.</p>
+        </div>
+      {:else}
+        <!-- Content goes here -->
+      {/if}
+  
+  </div>
+</div>
 {/if}
