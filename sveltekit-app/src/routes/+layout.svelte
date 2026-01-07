@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { isPreviewing, VisualEditing } from '@sanity/visual-editing/svelte';
+	import { injectAnalytics } from '@vercel/analytics/sveltekit'
+	import { dev } from '$app/environment';
 	import LiveMode from '../components/LiveMode.svelte';
 	import { page } from '$app/stores';
 	import "../app.css";
@@ -13,6 +15,7 @@
 	}
 
 	let { children }: Props = $props();
+	injectAnalytics({ mode: dev ? 'development' : 'production' });
 </script>
 
 <SEO />

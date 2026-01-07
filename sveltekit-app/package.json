@@ -16,6 +16,7 @@
 		"@sanity/svelte-loader": "^1.13.51",
 		"@sanity/visual-editing": "^3.0.5",
 		"@tailwindcss/vite": "^4.1.13",
+		"@vercel/analytics": "^1.6.1",
 		"groq": "^3.33.0",
 		"nodemailer": "^7.0.12",
 		"tailwindcss": "^4.1.13"
