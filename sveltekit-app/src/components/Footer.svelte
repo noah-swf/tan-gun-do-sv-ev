@@ -17,11 +17,11 @@
 					<h1 class="font-semibold">&copy; {year} Tan Gun Do SV e.V.</h1>
 				</div>
 
-				<div class="flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0 mt-6 md:mt-0 md:items-center">
+				<div class="flex flex-col md:flex-row md:space-x-6 space-y-4 md:space-y-0 mt-6 md:mt-0 md:items-center">
 				{#each links as linkB}
 					<a
 						href={linkB.href}
-						class="font-thin text-gray-600 hover:underline"
+						class="text-sm font-thin text-gray-600 hover:underline"
 					>
 						{linkB.name}
 					</a>

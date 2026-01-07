@@ -227,7 +227,7 @@
             <p class="opacity-50">{computedSubtitle}</p>
             <div class="flex flex-col lg:flex-row space-x-3 space-y-3 mt-7 lg:mt-0 lg:space-y-0">
                 <ButtonFilled href="/probetraining">Jetzt mitmachen</ButtonFilled>
-                <ButtonOutlined href="/news">Aktuelles aus dem Verein</ButtonOutlined>
+                <ButtonOutlined href="/news">Neuigkeiten ansehen</ButtonOutlined>
             </div>
         </div>
         <img src={logo} alt="Tan Gun Do Logo" class="absolute left-0 lg:left-1/4 top-[52vh] lg:top-[5vh] -z-1 lg:w-xl w-40 opacity-10" />
