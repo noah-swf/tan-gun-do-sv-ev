@@ -11,7 +11,7 @@
 	},
 	"dependencies": {
 		"@lucide/svelte": "^0.544.0",
-		"@sanity/client": "^6.15.4",
+		"@sanity/client": "^7.0.0",
 		"@sanity/image-url": "^1.0.2",
 		"@sanity/svelte-loader": "^1.13.51",
 		"@sanity/visual-editing": "^3.0.5",
@@ -45,6 +45,7 @@
 	"type": "module",
 	"optionalDependencies": {
 		"@esbuild/linux-x64": "^0.27.2",
+		"@tailwindcss/oxide-linux-x64-gnu": "^4.1.18",
 		"lightningcss-linux-x64-gnu": "^1.30.2"
 	}
 }
