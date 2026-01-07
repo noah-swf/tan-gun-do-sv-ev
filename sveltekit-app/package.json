@@ -44,6 +44,7 @@
 	},
 	"type": "module",
 	"optionalDependencies": {
-		"@esbuild/linux-x64": "^0.27.2"
+		"@esbuild/linux-x64": "^0.27.2",
+		"lightningcss-linux-x64-gnu": "^1.30.2"
 	}
 }
