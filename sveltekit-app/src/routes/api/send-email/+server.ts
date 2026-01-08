@@ -1,30 +1,53 @@
 import type { RequestHandler } from '@sveltejs/kit';
 import nodemailer from 'nodemailer';
-import { EMAIL_USER, EMAIL_PASS } from '$env/static/private';
+import { BREVO_SMTP_USER, BREVO_SMTP_PASS, CLUB_MAIL_ADDRESS, CLUB_MAIL_SENDER_NAME } from '$env/static/private';
 
 export const POST: RequestHandler = async ({ request }) => {
-    const { name, email, subject, message } = await request.json();
+
+    let { name, email, subject, message, confirmEmail } = await request.json();
+
+    // Honeypot Check
+    if (confirmEmail) {
+        // Silent failure for bots - pretend success
+        return new Response(JSON.stringify({ success: true }), { status: 200 });
+    }
+
+    // Trim inputs
+    name = (name || '').trim();
+    email = (email || '').trim();
+    subject = (subject || '').trim();
+    message = (message || '').trim();
+
+    // Input Validation
+    if (!name || !email || !message) {
+        return new Response(JSON.stringify({ success: false, error: 'Missing required fields' }), { status: 400 });
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        return new Response(JSON.stringify({ success: false, error: 'Invalid email format' }), { status: 400 });
+    }
 
     try {
         const transporter = nodemailer.createTransport({
-            host: 'smtp.ethereal.email', // e.g., 'smtp.gmail.com' for Gmail or any other host we might use
-            port: 587, // probably  465 for SSL, not sure yet
-            secure: false,
+            host: 'smtp-relay.brevo.com',
+            port: 587, 
             auth:{
-                user: EMAIL_USER,
-                pass: EMAIL_PASS
+                user: BREVO_SMTP_USER,
+                pass: BREVO_SMTP_PASS
             },
         });
         
         await transporter.sendMail({
-            from: `"${name}" <${email}>`,
-            to: EMAIL_USER,
+            from: CLUB_MAIL_SENDER_NAME,
+            replyTo: `"${name}" <${email}>`,
+            to: CLUB_MAIL_ADDRESS,
             subject: subject || 'Neue Kontaktanfrage',
             text:`
-            Name: ${name}
-            Email: ${email}
-            Betreff: ${subject}
-            Nachricht: ${message}`,
+            <i>Nachricht von <b>${name}</b> (${email}):</i>
+            
+            ${message}
+            `
         });
         return new Response(JSON.stringify({ success: true }), { status: 200 });
     } catch (error){

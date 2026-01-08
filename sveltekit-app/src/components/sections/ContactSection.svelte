@@ -11,6 +11,7 @@
     let email = '';
     let subject = '';
     let message = '';
+    let confirmEmail = ''; // Honeypot field for spam prevention
     let success = false;
     let error = false;
     let privacyAccepted = false;
@@ -22,7 +23,7 @@
             const res = await fetch('/api/send-email', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, email, subject, message })
+                body: JSON.stringify({ name, email, subject, message, confirmEmail })
             });
             const result = await res.json();
 
@@ -75,7 +76,13 @@
                 </div>
             {/if}
             <form on:submit={handleSubmit} class="space-y-4 text-sm">
-            
+                
+                <!-- Hidden honeypot field -->
+                <div class="hidden" aria-hidden="true">
+                    <label for="confirm-email">Confirm email</label>
+                    <input id="confirm-email" type="text" name="confirm-email" bind:value={confirmEmail} tabindex="-1" autocomplete="off" />
+                </div>
+
                 <div>
                     <label for="name" class="block mb-2 font-medium text-gray-700">Name</label>
                     <input id="name" type="text" bind:value={name} required
