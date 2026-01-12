@@ -32,6 +32,71 @@ Das Projekt wurde mit modernen Web-Technologien entwickelt, um Performance, SEO 
 * **Kontaktformular:** Einfache Möglichkeit für Interessierte, Kontakt aufzunehmen.
 * **Fast vollständige CMS Kompatibilität:** Nahezu alle Inhalte können über Sanity angepasst werden.
 
+## 🚀 Installation & Setup
+
+Folge diesen Schritten, um das Projekt lokal aufzusetzen:
+
+### 1. Repository klonen
+
+```bash
+git clone https://github.com/noah-swf/tan-gun-do-sv-ev.git
+cd tan-gun-do-sv-ev
+```
+
+### 2. Abhängigkeiten installieren
+
+Dieses Projekt nutzt [npm](https://www.npmjs.com/) als Paketmanager. Installiere die Abhängigkeiten im Root-Verzeichnis:
+
+```bash
+npm install
+```
+
+### 3. Umgebungsvariablen konfigurieren
+
+Erstelle `.env` Dateien basierend auf den Beispielen:
+
+**Für das Studio (`/studio`):**
+Kopiere `studio/.env.example` nach `studio/.env`:
+```bash
+cp studio/.env.example studio/.env
+```
+Fülle die Variablen `SANITY_STUDIO_PROJECT_ID` und `SANITY_STUDIO_DATASET` aus.
+
+**Für die SvelteKit App (`/sveltekit-app`):**
+Kopiere `sveltekit-app/.env.example` nach `sveltekit-app/.env`:
+```bash
+cp sveltekit-app/.env.example sveltekit-app/.env
+```
+Fülle die erforderlichen Sanity-Variablen aus.
+
+### 4. Lokal starten
+
+Starte beide Workspaces (Studio & App) gleichzeitig mit einem Befehl im Root-Verzeichnis:
+
+```bash
+npm run dev
+```
+
+* **Frontend:** [http://localhost:5173](http://localhost:5173)
+* **Sanity Studio:** [http://localhost:3333](http://localhost:3333)
+
+## 📂 Projektstruktur
+
+```
+.
+├── studio/           # Sanity CMS Konfiguration & Schemas
+├── sveltekit-app/    # SvelteKit Frontend Anwendung
+└── package.json      # Dependencies
+```
+## ⚖️ License & Usage
+
+**© 2026 Tan Gun Do SV e.V. - All Rights Reserved.**
+
+This repository is published for **portfolio and demonstration purposes only**.
+
+*   You **MAY** view the code to evaluate the project's architecture and quality.
+*   You **MAY NOT** use, copy, modify, or distribute the code, design, or assets for your own projects, whether commercial or personal.
+*   The design and specific implementation details remain the intellectual property of the creators.
 
 ## 👥 Developer
 
