@@ -12,7 +12,7 @@ Willkommen im Repository der offiziellen Website des **Tan Gun Do SV e.V.**, dem
 
 Diese Website dient als digitale Anlaufstelle für Mitglieder und Interessierte, um Informationen über Trainingszeiten, aktuelle Neuigkeiten, Termine und den Verein selbst zu erhalten.
 
-🔗 **Live-Demo:** [https://tan-gun-do-sv-ev.vercel.app/](https://tan-gun-do-sv-ev.vercel.app/)
+🔗 **Live-Demo:** [https://tangundo.de/](https://tangundo.de/)
 
 ## 🛠 Tech Stack
 
